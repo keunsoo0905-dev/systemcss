@@ -1,0 +1,41 @@
+{
+  "name": "treeview",
+  "displayName": "TreeView",
+  "description": "Windows 7 스타일 트리뷰. 재귀 트리 구조, container/collapse-button/connector 변형 지원. Compound Component (TreeView + TreeItem).",
+  "dependencies": [],
+  "css": [
+    "css/treeview.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/treeview/treeview.tsx",
+        "react/treeview/tree-item.tsx"
+      ],
+      "js": [
+        "react/treeview/treeview.jsx",
+        "react/treeview/tree-item.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/treeview/TreeView.svelte",
+        "svelte/treeview/TreeItem.svelte"
+      ],
+      "js": [
+        "svelte/treeview/TreeView.js.svelte",
+        "svelte/treeview/TreeItem.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/treeview/TreeView.vue",
+        "vue/treeview/TreeItem.vue"
+      ],
+      "js": [
+        "vue/treeview/TreeView.js.vue",
+        "vue/treeview/TreeItem.js.vue"
+      ]
+    }
+  }
+}
