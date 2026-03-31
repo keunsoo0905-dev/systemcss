@@ -1,0 +1,21 @@
+{
+  "name": "listbox",
+  "displayName": "ListBox",
+  "description": "Windows 7 스타일 스크롤 가능한 선택 목록",
+  "dependencies": [],
+  "css": ["css/listbox.css"],
+  "files": {
+    "react": {
+      "ts": ["react/listbox/listbox.tsx"],
+      "js": ["react/listbox/listbox.jsx"]
+    },
+    "svelte": {
+      "ts": ["svelte/listbox/ListBox.svelte"],
+      "js": ["svelte/listbox/ListBox.js.svelte"]
+    },
+    "vue": {
+      "ts": ["vue/listbox/ListBox.vue"],
+      "js": ["vue/listbox/ListBox.js.vue"]
+    }
+  }
+}

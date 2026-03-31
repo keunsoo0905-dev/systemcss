@@ -1,0 +1,40 @@
+/* registry/css/listbox.css */
+/* 7.css 원본 기반 — [role=listbox] / select[multiple] 스타일 */
+
+.win7-listbox {
+  background: #fff;
+  border: 1px solid #c0c1cd;
+  display: block;
+  font: 9pt "Segoe UI", SegoeUI, "Noto Sans", sans-serif;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.win7-listbox.has-shadow {
+  box-shadow: 4px 4px 3px -2px #999;
+}
+
+.win7-listbox:focus {
+  outline: none;
+}
+
+.win7-listbox-option {
+  padding: 2px;
+  cursor: default;
+}
+
+.win7-listbox.has-hover .win7-listbox-option:hover {
+  background-color: #2a90ff;
+  color: #fff;
+}
+
+.win7-listbox-option:focus,
+.win7-listbox-option[aria-selected="true"] {
+  background-color: #2a90ff;
+  color: #fff;
+}
+
+.win7-listbox-option.selected {
+  background-color: #2a90ff;
+  color: #fff;
+}
