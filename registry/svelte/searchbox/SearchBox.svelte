@@ -1,0 +1,123 @@
+<!-- registry/svelte/searchbox/SearchBox.svelte -->
+<script lang="ts">
+  interface Props {
+    value?: string;
+    onSearch?: (query: string) => void;
+    placeholder?: string;
+    disabled?: boolean;
+    class?: string;
+  }
+
+  let {
+    value = $bindable(""),
+    onSearch,
+    placeholder,
+    disabled = false,
+    class: className,
+  }: Props = $props();
+
+  function handleInput(e: Event) {
+    const target = e.target as HTMLInputElement;
+    value = target.value;
+  }
+
+  function handleSearch() {
+    onSearch?.(value);
+  }
+
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  }
+</script>
+
+<div class="win7-searchbox {className ?? ''}">
+  <input
+    type="search"
+    role="searchbox"
+    class="win7-searchbox-input"
+    {value}
+    oninput={handleInput}
+    onkeydown={handleKeyDown}
+    {placeholder}
+    {disabled}
+  />
+  <button
+    type="button"
+    aria-label="search"
+    class="win7-searchbox-button"
+    onclick={handleSearch}
+    {disabled}
+  ></button>
+</div>
+
+<style>
+/* registry/css/searchbox.css */
+/* 7.css 원본 기반 — [type=search] + .searchbox 스타일 */
+
+.win7-searchbox {
+  display: inline-block;
+  position: relative;
+}
+
+.win7-searchbox-input {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 #8e8f8f, inset -1px -1px 0 #ccc;
+  box-sizing: border-box;
+  font: 9pt "Segoe UI", SegoeUI, "Noto Sans", sans-serif;
+  height: 24px;
+  min-width: 187px;
+  padding: 3px 26px 3px 6px;
+}
+
+.win7-searchbox-input:placeholder-shown {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjQuNSIgc3Ryb2tlPSIjODA4MDgwIi8+PHBhdGggZD0iTTkuNSA5LjVMMTMgMTMiIHN0cm9rZT0iIzgwODA4MCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+");
+  background-position: calc(100% - 8px);
+  background-repeat: no-repeat;
+  background-size: 14px;
+}
+
+.win7-searchbox-input:focus {
+  outline: none;
+}
+
+.win7-searchbox-input::placeholder {
+  font-style: italic;
+}
+
+.win7-searchbox-button {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjQuNSIgc3Ryb2tlPSIjODA4MDgwIi8+PHBhdGggZD0iTTkuNSA5LjVMMTMgMTMiIHN0cm9rZT0iIzgwODA4MCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+")
+    no-repeat 50%,
+    linear-gradient(#f2f2f2 45%, #ebebeb 0, #cfcfcf);
+  background-size: 14px;
+  border: 1px solid #8e8f8f;
+  border-left: none;
+  border-radius: 0;
+  min-height: 22px;
+  min-width: 26px;
+  padding: 0;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  cursor: pointer;
+}
+
+.win7-searchbox-button:hover {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjQuNSIgc3Ryb2tlPSIjODA4MDgwIi8+PHBhdGggZD0iTTkuNSA5LjVMMTMgMTMiIHN0cm9rZT0iIzgwODA4MCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+")
+    no-repeat 50%,
+    linear-gradient(#eaf6fd 45%, #bee6fd 0, #a7d9f5);
+  background-size: 14px;
+  border-color: #3c7fb1;
+}
+
+.win7-searchbox-button:active {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjQuNSIgc3Ryb2tlPSIjODA4MDgwIi8+PHBhdGggZD0iTTkuNSA5LjVMMTMgMTMiIHN0cm9rZT0iIzgwODA4MCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+")
+    no-repeat 50%,
+    linear-gradient(#e5f4fc, #c4e5f6 30% 50%, #98d1ef 50%, #68b3db);
+  background-size: 14px;
+  border-color: #6d91ab;
+}
+</style>

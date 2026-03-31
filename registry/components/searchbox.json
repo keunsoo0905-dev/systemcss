@@ -1,0 +1,21 @@
+{
+  "name": "searchbox",
+  "displayName": "SearchBox",
+  "description": "Windows 7 스타일 검색 입력 컴포넌트 (검색 아이콘 포함)",
+  "dependencies": [],
+  "css": ["css/searchbox.css"],
+  "files": {
+    "react": {
+      "ts": ["react/searchbox/searchbox.tsx"],
+      "js": ["react/searchbox/searchbox.jsx"]
+    },
+    "svelte": {
+      "ts": ["svelte/searchbox/SearchBox.svelte"],
+      "js": ["svelte/searchbox/SearchBox.js.svelte"]
+    },
+    "vue": {
+      "ts": ["vue/searchbox/SearchBox.vue"],
+      "js": ["vue/searchbox/SearchBox.js.vue"]
+    }
+  }
+}
