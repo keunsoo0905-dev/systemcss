@@ -1,0 +1,35 @@
+{
+  "name": "checkbox",
+  "displayName": "Checkbox",
+  "description": "Windows 7 스타일 체크박스",
+  "dependencies": [],
+  "css": [
+    "css/checkbox.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/checkbox/checkbox.tsx"
+      ],
+      "js": [
+        "react/checkbox/checkbox.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/checkbox/Checkbox.svelte"
+      ],
+      "js": [
+        "svelte/checkbox/Checkbox.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/checkbox/Checkbox.vue"
+      ],
+      "js": [
+        "vue/checkbox/Checkbox.js.vue"
+      ]
+    }
+  }
+}

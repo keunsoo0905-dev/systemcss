@@ -1,0 +1,35 @@
+{
+  "name": "textbox",
+  "displayName": "TextBox",
+  "description": "Windows 7 스타일 텍스트 입력 필드",
+  "dependencies": [],
+  "css": [
+    "css/textbox.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/textbox/textbox.tsx"
+      ],
+      "js": [
+        "react/textbox/textbox.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/textbox/TextBox.svelte"
+      ],
+      "js": [
+        "svelte/textbox/TextBox.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/textbox/TextBox.vue"
+      ],
+      "js": [
+        "vue/textbox/TextBox.js.vue"
+      ]
+    }
+  }
+}

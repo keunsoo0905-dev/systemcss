@@ -1,0 +1,35 @@
+{
+  "name": "groupbox",
+  "displayName": "GroupBox",
+  "description": "Windows 7 스타일 그룹 박스 (fieldset)",
+  "dependencies": [],
+  "css": [
+    "css/groupbox.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/groupbox/groupbox.tsx"
+      ],
+      "js": [
+        "react/groupbox/groupbox.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/groupbox/GroupBox.svelte"
+      ],
+      "js": [
+        "svelte/groupbox/GroupBox.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/groupbox/GroupBox.vue"
+      ],
+      "js": [
+        "vue/groupbox/GroupBox.js.vue"
+      ]
+    }
+  }
+}

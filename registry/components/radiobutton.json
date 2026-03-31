@@ -1,0 +1,35 @@
+{
+  "name": "radiobutton",
+  "displayName": "RadioButton",
+  "description": "Windows 7 스타일 라디오 버튼",
+  "dependencies": [],
+  "css": [
+    "css/radiobutton.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/radiobutton/radiobutton.tsx"
+      ],
+      "js": [
+        "react/radiobutton/radiobutton.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/radiobutton/RadioButton.svelte"
+      ],
+      "js": [
+        "svelte/radiobutton/RadioButton.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/radiobutton/RadioButton.vue"
+      ],
+      "js": [
+        "vue/radiobutton/RadioButton.js.vue"
+      ]
+    }
+  }
+}

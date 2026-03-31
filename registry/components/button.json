@@ -1,0 +1,35 @@
+{
+  "name": "button",
+  "displayName": "Button",
+  "description": "Windows 7 스타일 푸시 버튼",
+  "dependencies": [],
+  "css": [
+    "css/button.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/button/button.tsx"
+      ],
+      "js": [
+        "react/button/button.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/button/Button.svelte"
+      ],
+      "js": [
+        "svelte/button/Button.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/button/Button.vue"
+      ],
+      "js": [
+        "vue/button/Button.js.vue"
+      ]
+    }
+  }
+}
