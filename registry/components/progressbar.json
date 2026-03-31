@@ -1,0 +1,21 @@
+{
+  "name": "progressbar",
+  "displayName": "ProgressBar",
+  "description": "Windows 7 스타일 프로그래스 바. 확정/불확정 모드, 일시정지/오류 상태, 애니메이션 지원.",
+  "dependencies": [],
+  "css": ["css/progressbar.css"],
+  "files": {
+    "react": {
+      "ts": ["react/progressbar/progressbar.tsx"],
+      "js": ["react/progressbar/progressbar.jsx"]
+    },
+    "svelte": {
+      "ts": ["svelte/progressbar/ProgressBar.svelte"],
+      "js": ["svelte/progressbar/ProgressBar.js.svelte"]
+    },
+    "vue": {
+      "ts": ["vue/progressbar/ProgressBar.vue"],
+      "js": ["vue/progressbar/ProgressBar.js.vue"]
+    }
+  }
+}
