@@ -1,21 +1,35 @@
 {
   "name": "dropdown",
   "displayName": "Dropdown",
-  "description": "Windows 7 스타일 드롭다운 선택 컴포넌트 (native select 기반)",
+  "description": "Windows 7 스타일 드롭다운 선택 컴포넌트",
   "dependencies": [],
-  "css": ["css/dropdown.css"],
+  "css": [
+    "css/dropdown.css"
+  ],
   "files": {
     "react": {
-      "ts": ["react/dropdown/dropdown.tsx"],
-      "js": ["react/dropdown/dropdown.jsx"]
+      "ts": [
+        "react/dropdown/dropdown.tsx"
+      ],
+      "js": [
+        "react/dropdown/dropdown.jsx"
+      ]
     },
     "svelte": {
-      "ts": ["svelte/dropdown/Dropdown.svelte"],
-      "js": ["svelte/dropdown/Dropdown.js.svelte"]
+      "ts": [
+        "svelte/dropdown/Dropdown.svelte"
+      ],
+      "js": [
+        "svelte/dropdown/Dropdown.js.svelte"
+      ]
     },
     "vue": {
-      "ts": ["vue/dropdown/Dropdown.vue"],
-      "js": ["vue/dropdown/Dropdown.js.vue"]
+      "ts": [
+        "vue/dropdown/Dropdown.vue"
+      ],
+      "js": [
+        "vue/dropdown/Dropdown.js.vue"
+      ]
     }
   }
 }

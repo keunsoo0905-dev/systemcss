@@ -104,6 +104,24 @@ const COMPONENT_CONFIGS: ComponentConfig[] = [
     description: "Windows 7 스타일 프로그래스 바",
     dependencies: [],
   },
+  {
+    name: "slider",
+    displayName: "Slider",
+    description: "Windows 7 스타일 슬라이더 (input[type=range]). 수평/수직 모드, box indicator 변형 지원.",
+    dependencies: [],
+  },
+  {
+    name: "spinner",
+    displayName: "Spinner",
+    description: "Windows 7 스타일 로딩 스피너. 정적/애니메이션 모드, 크기 변형 지원.",
+    dependencies: [],
+  },
+  {
+    name: "treeview",
+    displayName: "TreeView",
+    description: "Windows 7 스타일 트리뷰. 재귀 트리 구조, container/collapse-button/connector 변형 지원.",
+    dependencies: [],
+  },
 ];
 
 interface FrameworkFiles {

@@ -1,21 +1,35 @@
 {
   "name": "listview",
   "displayName": "ListView",
-  "description": "Windows 7 스타일 테이블 기반 데이터 목록 (정렬 가능 헤더)",
+  "description": "Windows 7 스타일 테이블 기반 데이터 목록",
   "dependencies": [],
-  "css": ["css/listview.css"],
+  "css": [
+    "css/listview.css"
+  ],
   "files": {
     "react": {
-      "ts": ["react/listview/listview.tsx"],
-      "js": ["react/listview/listview.jsx"]
+      "ts": [
+        "react/listview/listview.tsx"
+      ],
+      "js": [
+        "react/listview/listview.jsx"
+      ]
     },
     "svelte": {
-      "ts": ["svelte/listview/ListView.svelte"],
-      "js": ["svelte/listview/ListView.js.svelte"]
+      "ts": [
+        "svelte/listview/ListView.svelte"
+      ],
+      "js": [
+        "svelte/listview/ListView.js.svelte"
+      ]
     },
     "vue": {
-      "ts": ["vue/listview/ListView.vue"],
-      "js": ["vue/listview/ListView.js.vue"]
+      "ts": [
+        "vue/listview/ListView.vue"
+      ],
+      "js": [
+        "vue/listview/ListView.js.vue"
+      ]
     }
   }
 }

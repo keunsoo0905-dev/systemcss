@@ -1,21 +1,35 @@
 {
   "name": "collapse",
   "displayName": "Collapse",
-  "description": "Windows 7 스타일 접기/펼치기 컴포넌트. HTML details/summary 기반.",
+  "description": "Windows 7 스타일 접기/펼치기",
   "dependencies": [],
-  "css": ["css/collapse.css"],
+  "css": [
+    "css/collapse.css"
+  ],
   "files": {
     "react": {
-      "ts": ["react/collapse/collapse.tsx"],
-      "js": ["react/collapse/collapse.jsx"]
+      "ts": [
+        "react/collapse/collapse.tsx"
+      ],
+      "js": [
+        "react/collapse/collapse.jsx"
+      ]
     },
     "svelte": {
-      "ts": ["svelte/collapse/Collapse.svelte"],
-      "js": ["svelte/collapse/Collapse.js.svelte"]
+      "ts": [
+        "svelte/collapse/Collapse.svelte"
+      ],
+      "js": [
+        "svelte/collapse/Collapse.js.svelte"
+      ]
     },
     "vue": {
-      "ts": ["vue/collapse/Collapse.vue"],
-      "js": ["vue/collapse/Collapse.js.vue"]
+      "ts": [
+        "vue/collapse/Collapse.vue"
+      ],
+      "js": [
+        "vue/collapse/Collapse.js.vue"
+      ]
     }
   }
 }

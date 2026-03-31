@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dropdown snapshot (React) > matches default snapshot 1`] = `"<select class="dropdown"><option value="a">Alpha</option><option value="b">Beta</option></select>"`;
+
+exports[`Dropdown snapshot (React) > matches disabled snapshot 1`] = `"<select class="dropdown" disabled=""><option value="a">Alpha</option><option value="b">Beta</option></select>"`;
+
+exports[`Dropdown snapshot (React) > matches snapshot with placeholder 1`] = `"<select class="dropdown"><option value="" disabled="">Choose...</option><option value="a">Alpha</option><option value="b">Beta</option></select>"`;
