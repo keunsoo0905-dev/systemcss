@@ -1,0 +1,39 @@
+{
+  "name": "menubar",
+  "displayName": "MenuBar",
+  "description": "Windows 7 스타일 수평 메뉴 바. Menu 컴포넌트를 드롭다운으로 사용한다.",
+  "dependencies": ["menu"],
+  "css": ["css/menubar.css"],
+  "files": {
+    "react": {
+      "ts": [
+        "react/menubar/menubar.tsx",
+        "react/menubar/menubar-item.tsx"
+      ],
+      "js": [
+        "react/menubar/menubar.jsx",
+        "react/menubar/menubar-item.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/menubar/MenuBar.svelte",
+        "svelte/menubar/MenuBarItem.svelte"
+      ],
+      "js": [
+        "svelte/menubar/MenuBar.js.svelte",
+        "svelte/menubar/MenuBarItem.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/menubar/MenuBar.vue",
+        "vue/menubar/MenuBarItem.vue"
+      ],
+      "js": [
+        "vue/menubar/MenuBar.js.vue",
+        "vue/menubar/MenuBarItem.js.vue"
+      ]
+    }
+  }
+}
