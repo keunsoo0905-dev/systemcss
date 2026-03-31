@@ -1,0 +1,23 @@
+<script setup>
+const props = defineProps({
+  legend: {
+    type: String,
+    default: undefined,
+  },
+  class: {
+    type: String,
+    default: "",
+  },
+});
+</script>
+
+<template>
+  <fieldset :class="['groupbox', props.class]">
+    <legend v-if="legend" class="legend">{{ legend }}</legend>
+    <slot />
+  </fieldset>
+</template>
+
+<style scoped>
+fieldset{border:1px solid #cdd7db;border-radius:3px;box-shadow:inset 0 0 0 1px #fff;margin:0;padding:8px 10px 10px}fieldset legend{font:9pt Segoe UI,SegoeUI,Noto Sans,sans-serif}.group,fieldset{display:flex;flex-direction:column;gap:6px}.group+.group{margin-top:6px}
+</style>
