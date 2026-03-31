@@ -1,0 +1,35 @@
+{
+  "name": "spinner",
+  "displayName": "Spinner",
+  "description": "Windows 7 스타일 로딩 스피너. 정적/애니메이션 모드, 크기 변형 지원.",
+  "dependencies": [],
+  "css": [
+    "css/spinner.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/spinner/spinner.tsx"
+      ],
+      "js": [
+        "react/spinner/spinner.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/spinner/Spinner.svelte"
+      ],
+      "js": [
+        "svelte/spinner/Spinner.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/spinner/Spinner.vue"
+      ],
+      "js": [
+        "vue/spinner/Spinner.js.vue"
+      ]
+    }
+  }
+}
