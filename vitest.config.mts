@@ -5,6 +5,9 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [react(), svelte(), vue()],
+  resolve: {
+    conditions: ["browser"],
+  },
   test: {
     environment: "jsdom",
     include: ["registry/**/*.test.{ts,tsx}"],
