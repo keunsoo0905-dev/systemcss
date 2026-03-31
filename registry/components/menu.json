@@ -1,0 +1,45 @@
+{
+  "name": "menu",
+  "displayName": "Menu",
+  "description": "Windows 7 스타일 컨텍스트 메뉴. Compound Component 패턴으로 MenuItem, MenuSeparator 하위 컴포넌트를 포함한다.",
+  "dependencies": [],
+  "css": ["css/menu.css"],
+  "files": {
+    "react": {
+      "ts": [
+        "react/menu/menu.tsx",
+        "react/menu/menu-item.tsx",
+        "react/menu/menu-separator.tsx"
+      ],
+      "js": [
+        "react/menu/menu.jsx",
+        "react/menu/menu-item.jsx",
+        "react/menu/menu-separator.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/menu/Menu.svelte",
+        "svelte/menu/MenuItem.svelte",
+        "svelte/menu/MenuSeparator.svelte"
+      ],
+      "js": [
+        "svelte/menu/Menu.js.svelte",
+        "svelte/menu/MenuItem.js.svelte",
+        "svelte/menu/MenuSeparator.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/menu/Menu.vue",
+        "vue/menu/MenuItem.vue",
+        "vue/menu/MenuSeparator.vue"
+      ],
+      "js": [
+        "vue/menu/Menu.js.vue",
+        "vue/menu/MenuItem.js.vue",
+        "vue/menu/MenuSeparator.js.vue"
+      ]
+    }
+  }
+}
