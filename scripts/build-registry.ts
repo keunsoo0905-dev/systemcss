@@ -44,6 +44,66 @@ const COMPONENT_CONFIGS: ComponentConfig[] = [
     description: "Windows 7 스타일 그룹 박스 (fieldset)",
     dependencies: [],
   },
+  {
+    name: "dropdown",
+    displayName: "Dropdown",
+    description: "Windows 7 스타일 드롭다운 선택 컴포넌트",
+    dependencies: [],
+  },
+  {
+    name: "combobox",
+    displayName: "ComboBox",
+    description: "Windows 7 스타일 콤보박스 (텍스트 입력 + 드롭다운 목록)",
+    dependencies: [],
+  },
+  {
+    name: "listbox",
+    displayName: "ListBox",
+    description: "Windows 7 스타일 스크롤 가능한 선택 목록",
+    dependencies: [],
+  },
+  {
+    name: "listview",
+    displayName: "ListView",
+    description: "Windows 7 스타일 테이블 기반 데이터 목록",
+    dependencies: [],
+  },
+  {
+    name: "searchbox",
+    displayName: "SearchBox",
+    description: "Windows 7 스타일 검색 입력 컴포넌트",
+    dependencies: [],
+  },
+  {
+    name: "tabs",
+    displayName: "Tabs",
+    description: "Windows 7 스타일 탭 내비게이션",
+    dependencies: [],
+  },
+  {
+    name: "menu",
+    displayName: "Menu",
+    description: "Windows 7 스타일 컨텍스트 메뉴",
+    dependencies: [],
+  },
+  {
+    name: "menubar",
+    displayName: "MenuBar",
+    description: "Windows 7 스타일 수평 메뉴 바",
+    dependencies: ["menu"],
+  },
+  {
+    name: "collapse",
+    displayName: "Collapse",
+    description: "Windows 7 스타일 접기/펼치기",
+    dependencies: [],
+  },
+  {
+    name: "progressbar",
+    displayName: "ProgressBar",
+    description: "Windows 7 스타일 프로그래스 바",
+    dependencies: [],
+  },
 ];
 
 interface FrameworkFiles {
