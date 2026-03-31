@@ -117,6 +117,30 @@
       "displayName": "TreeView",
       "description": "Windows 7 스타일 트리뷰. 재귀 트리 구조, container/collapse-button/connector 변형 지원.",
       "dependencies": []
+    },
+    {
+      "name": "window",
+      "displayName": "Window",
+      "description": "Windows 7 윈도우 프레임",
+      "dependencies": []
+    },
+    {
+      "name": "scrollbar",
+      "displayName": "Scrollbar",
+      "description": "Windows 7 스타일 커스텀 스크롤바",
+      "dependencies": []
+    },
+    {
+      "name": "balloon",
+      "displayName": "Balloon",
+      "description": "Windows 7 스타일 말풍선 툴팁",
+      "dependencies": []
+    },
+    {
+      "name": "typography",
+      "displayName": "Typography",
+      "description": "Windows 7 스타일 기본 텍스트 스타일",
+      "dependencies": []
     }
   ]
 }
