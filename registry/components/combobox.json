@@ -1,0 +1,21 @@
+{
+  "name": "combobox",
+  "displayName": "ComboBox",
+  "description": "Windows 7 스타일 콤보박스 (텍스트 입력 + 드롭다운 목록)",
+  "dependencies": [],
+  "css": ["css/combobox.css"],
+  "files": {
+    "react": {
+      "ts": ["react/combobox/combobox.tsx"],
+      "js": ["react/combobox/combobox.jsx"]
+    },
+    "svelte": {
+      "ts": ["svelte/combobox/ComboBox.svelte"],
+      "js": ["svelte/combobox/ComboBox.js.svelte"]
+    },
+    "vue": {
+      "ts": ["vue/combobox/ComboBox.vue"],
+      "js": ["vue/combobox/ComboBox.js.vue"]
+    }
+  }
+}
