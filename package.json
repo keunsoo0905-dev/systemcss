@@ -1,0 +1,22 @@
+{
+  "name": "win7ui-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Windows 7 UI component library - shadcn/ui style",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev",
+    "inject-css": "tsx scripts/inject-css.ts",
+    "build-registry": "tsx scripts/build-registry.ts",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
