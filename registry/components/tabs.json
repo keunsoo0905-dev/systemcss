@@ -1,0 +1,45 @@
+{
+  "name": "tabs",
+  "displayName": "Tabs",
+  "description": "Windows 7 스타일 탭 내비게이션. Compound Component 패턴으로 Tab과 TabPanel 하위 컴포넌트를 포함한다.",
+  "dependencies": [],
+  "css": ["css/tabs.css"],
+  "files": {
+    "react": {
+      "ts": [
+        "react/tabs/tabs.tsx",
+        "react/tabs/tab.tsx",
+        "react/tabs/tab-panel.tsx"
+      ],
+      "js": [
+        "react/tabs/tabs.jsx",
+        "react/tabs/tab.jsx",
+        "react/tabs/tab-panel.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/tabs/Tabs.svelte",
+        "svelte/tabs/Tab.svelte",
+        "svelte/tabs/TabPanel.svelte"
+      ],
+      "js": [
+        "svelte/tabs/Tabs.js.svelte",
+        "svelte/tabs/Tab.js.svelte",
+        "svelte/tabs/TabPanel.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/tabs/Tabs.vue",
+        "vue/tabs/Tab.vue",
+        "vue/tabs/TabPanel.vue"
+      ],
+      "js": [
+        "vue/tabs/Tabs.js.vue",
+        "vue/tabs/Tab.js.vue",
+        "vue/tabs/TabPanel.js.vue"
+      ]
+    }
+  }
+}
