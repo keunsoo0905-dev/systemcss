@@ -1,0 +1,168 @@
+import fs from "fs-extra";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const REGISTRY_DIR = path.resolve(__dirname, "../registry");
+
+interface ComponentConfig {
+  name: string;
+  displayName: string;
+  description: string;
+  dependencies: string[];
+}
+
+const COMPONENT_CONFIGS: ComponentConfig[] = [
+  {
+    name: "button",
+    displayName: "Button",
+    description: "Windows 7 스타일 푸시 버튼",
+    dependencies: [],
+  },
+  {
+    name: "textbox",
+    displayName: "TextBox",
+    description: "Windows 7 스타일 텍스트 입력 필드",
+    dependencies: [],
+  },
+  {
+    name: "checkbox",
+    displayName: "Checkbox",
+    description: "Windows 7 스타일 체크박스",
+    dependencies: [],
+  },
+  {
+    name: "radiobutton",
+    displayName: "RadioButton",
+    description: "Windows 7 스타일 라디오 버튼",
+    dependencies: [],
+  },
+  {
+    name: "groupbox",
+    displayName: "GroupBox",
+    description: "Windows 7 스타일 그룹 박스 (fieldset)",
+    dependencies: [],
+  },
+];
+
+interface FrameworkFiles {
+  ts: string[];
+  js: string[];
+}
+
+async function discoverFrameworkFiles(
+  framework: string,
+  componentName: string
+): Promise<FrameworkFiles> {
+  const dir = path.join(REGISTRY_DIR, framework, componentName);
+  const result: FrameworkFiles = { ts: [], js: [] };
+
+  if (!(await fs.pathExists(dir))) {
+    return result;
+  }
+
+  const files = await fs.readdir(dir);
+
+  for (const file of files) {
+    const relativePath = `${framework}/${componentName}/${file}`;
+
+    if (framework === "react") {
+      if (file.endsWith(".tsx")) {
+        result.ts.push(relativePath);
+      } else if (file.endsWith(".jsx")) {
+        result.js.push(relativePath);
+      }
+    } else if (framework === "svelte") {
+      // Button.svelte = TS, Button.js.svelte = JS
+      if (file.endsWith(".js.svelte")) {
+        result.js.push(relativePath);
+      } else if (file.endsWith(".svelte")) {
+        result.ts.push(relativePath);
+      }
+    } else if (framework === "vue") {
+      // Button.vue = TS, Button.js.vue = JS
+      if (file.endsWith(".js.vue")) {
+        result.js.push(relativePath);
+      } else if (file.endsWith(".vue")) {
+        result.ts.push(relativePath);
+      }
+    }
+  }
+
+  return result;
+}
+
+async function buildComponentJson(config: ComponentConfig): Promise<void> {
+  const cssFile = `css/${config.name}.css`;
+  const cssPath = path.join(REGISTRY_DIR, cssFile);
+  const hasCss = await fs.pathExists(cssPath);
+
+  const react = await discoverFrameworkFiles("react", config.name);
+  const svelte = await discoverFrameworkFiles("svelte", config.name);
+  const vue = await discoverFrameworkFiles("vue", config.name);
+
+  const componentJson = {
+    name: config.name,
+    displayName: config.displayName,
+    description: config.description,
+    dependencies: config.dependencies,
+    css: hasCss ? [cssFile] : [],
+    files: {
+      react,
+      svelte,
+      vue,
+    },
+  };
+
+  const outputPath = path.join(
+    REGISTRY_DIR,
+    "components",
+    `${config.name}.json`
+  );
+  await fs.ensureDir(path.dirname(outputPath));
+  await fs.writeJson(outputPath, componentJson, { spaces: 2 });
+  console.log(`  Built: components/${config.name}.json`);
+}
+
+async function buildIndexJson(): Promise<void> {
+  const components = COMPONENT_CONFIGS.map((config) => ({
+    name: config.name,
+    displayName: config.displayName,
+    description: config.description,
+    dependencies: config.dependencies,
+  }));
+
+  const indexJson = {
+    registryVersion: "1.0.0",
+    minCliVersion: "0.1.0",
+    maxCliVersion: "0.x.x",
+    base: {
+      css: ["css/base.css"],
+    },
+    components,
+  };
+
+  const outputPath = path.join(REGISTRY_DIR, "index.json");
+  await fs.writeJson(outputPath, indexJson, { spaces: 2 });
+  console.log(`  Built: index.json`);
+}
+
+async function main(): Promise<void> {
+  console.log("Building registry...\n");
+
+  // Build component JSONs
+  for (const config of COMPONENT_CONFIGS) {
+    await buildComponentJson(config);
+  }
+
+  // Build index.json
+  await buildIndexJson();
+
+  console.log("\nRegistry build complete.");
+}
+
+main().catch((err) => {
+  console.error("Registry build failed:", err);
+  process.exit(1);
+});
