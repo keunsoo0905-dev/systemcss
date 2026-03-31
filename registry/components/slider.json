@@ -1,0 +1,35 @@
+{
+  "name": "slider",
+  "displayName": "Slider",
+  "description": "Windows 7 스타일 슬라이더 (input[type=range]). 수평/수직 모드, box indicator 변형 지원.",
+  "dependencies": [],
+  "css": [
+    "css/slider.css"
+  ],
+  "files": {
+    "react": {
+      "ts": [
+        "react/slider/slider.tsx"
+      ],
+      "js": [
+        "react/slider/slider.jsx"
+      ]
+    },
+    "svelte": {
+      "ts": [
+        "svelte/slider/Slider.svelte"
+      ],
+      "js": [
+        "svelte/slider/Slider.js.svelte"
+      ]
+    },
+    "vue": {
+      "ts": [
+        "vue/slider/Slider.vue"
+      ],
+      "js": [
+        "vue/slider/Slider.js.vue"
+      ]
+    }
+  }
+}
