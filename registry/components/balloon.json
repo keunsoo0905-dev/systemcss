@@ -3,19 +3,33 @@
   "displayName": "Balloon",
   "description": "Windows 7 스타일 말풍선 툴팁. 위치 변형(top/bottom) 및 화살표 정렬(left/right) 지원.",
   "dependencies": [],
-  "css": ["css/balloon.css"],
+  "css": [
+    "css/balloon.css"
+  ],
   "files": {
     "react": {
-      "ts": ["react/balloon/balloon.tsx"],
-      "js": ["react/balloon/balloon.jsx"]
+      "ts": [
+        "react/balloon/balloon.tsx"
+      ],
+      "js": [
+        "react/balloon/balloon.jsx"
+      ]
     },
     "svelte": {
-      "ts": ["svelte/balloon/Balloon.svelte"],
-      "js": ["svelte/balloon/Balloon.js.svelte"]
+      "ts": [
+        "svelte/balloon/Balloon.svelte"
+      ],
+      "js": [
+        "svelte/balloon/Balloon.js.svelte"
+      ]
     },
     "vue": {
-      "ts": ["vue/balloon/Balloon.vue"],
-      "js": ["vue/balloon/Balloon.js.vue"]
+      "ts": [
+        "vue/balloon/Balloon.vue"
+      ],
+      "js": [
+        "vue/balloon/Balloon.js.vue"
+      ]
     }
   }
 }

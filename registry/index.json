@@ -121,25 +121,25 @@
     {
       "name": "window",
       "displayName": "Window",
-      "description": "Windows 7 윈도우 프레임",
+      "description": "Windows 7 윈도우 프레임. TitleBar, WindowBody, StatusBar, GlassFrame, DialogBox 하위 컴포넌트 포함.",
       "dependencies": []
     },
     {
       "name": "scrollbar",
       "displayName": "Scrollbar",
-      "description": "Windows 7 스타일 커스텀 스크롤바",
+      "description": "Windows 7 스타일 커스텀 스크롤바. 적용 영역에 스크롤바 CSS를 부여하는 래퍼 컴포넌트.",
       "dependencies": []
     },
     {
       "name": "balloon",
       "displayName": "Balloon",
-      "description": "Windows 7 스타일 말풍선 툴팁",
+      "description": "Windows 7 스타일 말풍선 툴팁. 위치 변형(top/bottom) 및 화살표 정렬(left/right) 지원.",
       "dependencies": []
     },
     {
       "name": "typography",
       "displayName": "Typography",
-      "description": "Windows 7 스타일 기본 텍스트 스타일",
+      "description": "Windows 7 스타일 기본 텍스트 스타일. Link, Instruction, Header 컴포넌트 제공.",
       "dependencies": []
     }
   ]

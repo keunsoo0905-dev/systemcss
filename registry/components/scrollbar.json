@@ -3,19 +3,33 @@
   "displayName": "Scrollbar",
   "description": "Windows 7 스타일 커스텀 스크롤바. 적용 영역에 스크롤바 CSS를 부여하는 래퍼 컴포넌트.",
   "dependencies": [],
-  "css": ["css/scrollbar.css"],
+  "css": [
+    "css/scrollbar.css"
+  ],
   "files": {
     "react": {
-      "ts": ["react/scrollbar/scrollbar.tsx"],
-      "js": ["react/scrollbar/scrollbar.jsx"]
+      "ts": [
+        "react/scrollbar/scrollbar.tsx"
+      ],
+      "js": [
+        "react/scrollbar/scrollbar.jsx"
+      ]
     },
     "svelte": {
-      "ts": ["svelte/scrollbar/Scrollbar.svelte"],
-      "js": ["svelte/scrollbar/Scrollbar.js.svelte"]
+      "ts": [
+        "svelte/scrollbar/Scrollbar.svelte"
+      ],
+      "js": [
+        "svelte/scrollbar/Scrollbar.js.svelte"
+      ]
     },
     "vue": {
-      "ts": ["vue/scrollbar/Scrollbar.vue"],
-      "js": ["vue/scrollbar/Scrollbar.js.vue"]
+      "ts": [
+        "vue/scrollbar/Scrollbar.vue"
+      ],
+      "js": [
+        "vue/scrollbar/Scrollbar.js.vue"
+      ]
     }
   }
 }

@@ -11,6 +11,7 @@
       "ts": [
         "react/tabs/tab-panel.tsx",
         "react/tabs/tab.tsx",
+        "react/tabs/tabs-context.ts",
         "react/tabs/tabs.tsx"
       ],
       "js": [

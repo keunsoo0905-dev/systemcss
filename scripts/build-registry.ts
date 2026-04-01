@@ -170,9 +170,9 @@ async function discoverFrameworkFiles(
     const relativePath = `${framework}/${componentName}/${file}`;
 
     if (framework === "react") {
-      if (file.endsWith(".tsx")) {
+      if (file.endsWith(".tsx") || (file.endsWith(".ts") && !file.endsWith(".d.ts"))) {
         result.ts.push(relativePath);
-      } else if (file.endsWith(".jsx")) {
+      } else if (file.endsWith(".jsx") || (file.endsWith(".js") && !file.includes(".test."))) {
         result.js.push(relativePath);
       }
     } else if (framework === "svelte") {
@@ -181,6 +181,10 @@ async function discoverFrameworkFiles(
         result.js.push(relativePath);
       } else if (file.endsWith(".svelte")) {
         result.ts.push(relativePath);
+      } else if (file === "index.ts") {
+        result.ts.push(relativePath);
+      } else if (file === "index.js") {
+        result.js.push(relativePath);
       }
     } else if (framework === "vue") {
       // Button.vue = TS, Button.js.vue = JS
@@ -188,6 +192,10 @@ async function discoverFrameworkFiles(
         result.js.push(relativePath);
       } else if (file.endsWith(".vue")) {
         result.ts.push(relativePath);
+      } else if (file === "index.ts") {
+        result.ts.push(relativePath);
+      } else if (file === "index.js") {
+        result.js.push(relativePath);
       }
     }
   }

@@ -3,65 +3,67 @@
   "displayName": "Window",
   "description": "Windows 7 윈도우 프레임. TitleBar, WindowBody, StatusBar, GlassFrame, DialogBox 하위 컴포넌트 포함.",
   "dependencies": [],
-  "css": ["css/window.css"],
+  "css": [
+    "css/window.css"
+  ],
   "files": {
     "react": {
       "ts": [
-        "react/window/window.tsx",
+        "react/window/dialog-box.tsx",
+        "react/window/glass-frame.tsx",
+        "react/window/index.ts",
+        "react/window/status-bar.tsx",
         "react/window/title-bar.tsx",
         "react/window/window-body.tsx",
-        "react/window/status-bar.tsx",
-        "react/window/glass-frame.tsx",
-        "react/window/dialog-box.tsx",
-        "react/window/index.ts"
+        "react/window/window.tsx"
       ],
       "js": [
-        "react/window/window.jsx",
+        "react/window/dialog-box.jsx",
+        "react/window/glass-frame.jsx",
+        "react/window/index.js",
+        "react/window/status-bar.jsx",
         "react/window/title-bar.jsx",
         "react/window/window-body.jsx",
-        "react/window/status-bar.jsx",
-        "react/window/glass-frame.jsx",
-        "react/window/dialog-box.jsx",
-        "react/window/index.js"
+        "react/window/window.jsx"
       ]
     },
     "svelte": {
       "ts": [
-        "svelte/window/Window.svelte",
-        "svelte/window/TitleBar.svelte",
-        "svelte/window/WindowBody.svelte",
-        "svelte/window/StatusBar.svelte",
-        "svelte/window/GlassFrame.svelte",
         "svelte/window/DialogBox.svelte",
+        "svelte/window/GlassFrame.svelte",
+        "svelte/window/StatusBar.svelte",
+        "svelte/window/TitleBar.svelte",
+        "svelte/window/Window.svelte",
+        "svelte/window/WindowBody.svelte",
         "svelte/window/index.ts"
       ],
       "js": [
-        "svelte/window/Window.js.svelte",
-        "svelte/window/TitleBar.js.svelte",
-        "svelte/window/WindowBody.js.svelte",
-        "svelte/window/StatusBar.js.svelte",
-        "svelte/window/GlassFrame.js.svelte",
         "svelte/window/DialogBox.js.svelte",
+        "svelte/window/GlassFrame.js.svelte",
+        "svelte/window/StatusBar.js.svelte",
+        "svelte/window/TitleBar.js.svelte",
+        "svelte/window/Window.js.svelte",
+        "svelte/window/WindowBody.js.svelte",
         "svelte/window/index.js"
       ]
     },
     "vue": {
       "ts": [
-        "vue/window/Window.vue",
-        "vue/window/TitleBar.vue",
-        "vue/window/WindowBody.vue",
-        "vue/window/StatusBar.vue",
-        "vue/window/GlassFrame.vue",
         "vue/window/DialogBox.vue",
+        "vue/window/GlassFrame.vue",
+        "vue/window/StatusBar.vue",
+        "vue/window/TitleBar.vue",
+        "vue/window/Window.vue",
+        "vue/window/WindowBody.vue",
         "vue/window/index.ts"
       ],
       "js": [
-        "vue/window/Window.js.vue",
-        "vue/window/TitleBar.js.vue",
-        "vue/window/WindowBody.js.vue",
-        "vue/window/StatusBar.js.vue",
-        "vue/window/GlassFrame.js.vue",
         "vue/window/DialogBox.js.vue",
+        "vue/window/GlassFrame.js.vue",
+        "vue/window/StatusBar.js.vue",
+        "vue/window/TitleBar.js.vue",
+        "vue/window/Window.js.vue",
+        "vue/window/WindowBody.js.vue",
         "vue/window/index.js"
       ]
     }
