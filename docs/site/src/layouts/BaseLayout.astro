@@ -6,64 +6,65 @@ interface Props {
 }
 
 const { title, description, isHome = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
 
 const components = [
   {
     category: "Form",
     items: [
-      { name: "Button", href: "/components/button" },
-      { name: "TextBox", href: "/components/textbox" },
-      { name: "Checkbox", href: "/components/checkbox" },
-      { name: "RadioButton", href: "/components/radiobutton" },
-      { name: "Dropdown", href: "/components/dropdown" },
-      { name: "ComboBox", href: "/components/combobox" },
-      { name: "SearchBox", href: "/components/searchbox" },
+      { name: "Button", href: `${base}/components/button` },
+      { name: "TextBox", href: `${base}/components/textbox` },
+      { name: "Checkbox", href: `${base}/components/checkbox` },
+      { name: "RadioButton", href: `${base}/components/radiobutton` },
+      { name: "Dropdown", href: `${base}/components/dropdown` },
+      { name: "ComboBox", href: `${base}/components/combobox` },
+      { name: "SearchBox", href: `${base}/components/searchbox` },
     ],
   },
   {
     category: "Container",
     items: [
-      { name: "Window", href: "/components/window" },
-      { name: "GroupBox", href: "/components/groupbox" },
-      { name: "Collapse", href: "/components/collapse" },
+      { name: "Window", href: `${base}/components/window` },
+      { name: "GroupBox", href: `${base}/components/groupbox` },
+      { name: "Collapse", href: `${base}/components/collapse` },
     ],
   },
   {
     category: "Data",
     items: [
-      { name: "ListBox", href: "/components/listbox" },
-      { name: "ListView", href: "/components/listview" },
-      { name: "TreeView", href: "/components/treeview" },
+      { name: "ListBox", href: `${base}/components/listbox` },
+      { name: "ListView", href: `${base}/components/listview` },
+      { name: "TreeView", href: `${base}/components/treeview` },
     ],
   },
   {
     category: "Navigation",
     items: [
-      { name: "Tabs", href: "/components/tabs" },
-      { name: "Menu", href: "/components/menu" },
-      { name: "MenuBar", href: "/components/menubar" },
-      { name: "Balloon", href: "/components/balloon" },
+      { name: "Tabs", href: `${base}/components/tabs` },
+      { name: "Menu", href: `${base}/components/menu` },
+      { name: "MenuBar", href: `${base}/components/menubar` },
+      { name: "Balloon", href: `${base}/components/balloon` },
     ],
   },
   {
     category: "Feedback",
     items: [
-      { name: "ProgressBar", href: "/components/progressbar" },
-      { name: "Spinner", href: "/components/spinner" },
-      { name: "Scrollbar", href: "/components/scrollbar" },
+      { name: "ProgressBar", href: `${base}/components/progressbar` },
+      { name: "Spinner", href: `${base}/components/spinner` },
+      { name: "Scrollbar", href: `${base}/components/scrollbar` },
     ],
   },
   {
     category: "Interactive",
     items: [
-      { name: "Slider", href: "/components/slider" },
+      { name: "Slider", href: `${base}/components/slider` },
     ],
   },
   {
     category: "Typography",
     items: [
-      { name: "Typography", href: "/components/typography" },
+      { name: "Typography", href: `${base}/components/typography` },
     ],
   },
 ];
@@ -424,12 +425,12 @@ function isActive(href: string): boolean {
   <body>
     <!-- Top Bar -->
     <header class="docs-topbar">
-      <a href="/" class="docs-topbar-brand">
+      <a href={`${base}/`} class="docs-topbar-brand">
         win7ui <span>v1.0.0</span>
       </a>
       <nav class="docs-topbar-links">
-        <a href="/guides/getting-started">Getting Started</a>
-        <a href="/components/button">Components</a>
+        <a href={`${base}/guides/getting-started`}>Getting Started</a>
+        <a href={`${base}/components/button`}>Components</a>
         <a href="https://github.com/keunsoo0905-dev/systemcss" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.npmjs.com/package/win7ui" target="_blank" rel="noopener">npm</a>
       </nav>
@@ -452,10 +453,10 @@ function isActive(href: string): boolean {
             <div class="window-body">
               <ul class="tree-view">
                 <li>
-                  <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+                  <a href={`${base}/`} class={isActive(`${base}/`) ? "active" : ""}>Home</a>
                 </li>
                 <li>
-                  <a href="/guides/getting-started" class={isActive("/guides/getting-started") ? "active" : ""}>Getting Started</a>
+                  <a href={`${base}/guides/getting-started`} class={isActive(`${base}/guides/getting-started`) ? "active" : ""}>Getting Started</a>
                 </li>
                 {components.map((group) => (
                   <li>
