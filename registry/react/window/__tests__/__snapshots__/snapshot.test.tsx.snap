@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Window snapshots > default window 1`] = `"<div class="window"><div class="title-bar"><div class="title-bar-text">Snapshot Test</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div><div class="window-body">Body content</div><div class="status-bar"><p class="status-bar-field">OK</p></div></div>"`;
+
+exports[`Window snapshots > dialog box 1`] = `"<div class="window" role="dialog"><div class="title-bar"><div class="title-bar-text">Dialog Snapshot</div><div class="title-bar-controls"><button aria-label="Close"></button></div></div><div class="window-body has-space">Content</div></div>"`;
+
+exports[`Window snapshots > glass frame 1`] = `"<div class="window glass"><div class="title-bar"><div class="title-bar-text">Glass Snapshot</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div><div class="window-body has-space">Content</div></div>"`;
