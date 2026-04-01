@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | win7ui</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css@0.21.1/dist/7.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+      .docs-layout {
+        display: flex;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .docs-sidebar {
+        width: 240px;
+        flex-shrink: 0;
+      }
+      .docs-content {
+        flex: 1;
+        min-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="docs-layout">
+      <nav class="docs-sidebar">
+        <div class="window">
+          <div class="title-bar">
+            <div class="title-bar-text">win7ui</div>
+          </div>
+          <div class="window-body">
+            <ul class="tree-view">
+              <li><a href="/">Home</a></li>
+              <li><a href="/guides/getting-started">Getting Started</a></li>
+              <li>
+                Components
+                <ul>
+                  <li><a href="/components/button">Button</a></li>
+                  <li><a href="/components/textbox">Textbox</a></li>
+                  <li><a href="/components/checkbox">Checkbox</a></li>
+                  <li><a href="/components/window">Window</a></li>
+                  <li><a href="/components/scrollbar">Scrollbar</a></li>
+                  <li><a href="/components/balloon">Balloon</a></li>
+                  <li><a href="/components/typography">Typography</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main class="docs-content">
+        <div class="window">
+          <div class="title-bar">
+            <div class="title-bar-text">{title}</div>
+          </div>
+          <div class="window-body has-space">
+            <slot />
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

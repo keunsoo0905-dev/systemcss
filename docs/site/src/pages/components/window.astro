@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Window">
+  <h1 class="header header-document">Window</h1>
+  <p class="instruction">
+    Windows 7 window frame. Compose with TitleBar, WindowBody, StatusBar, GlassFrame, and DialogBox.
+  </p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add window</code></pre>
+
+  <h2 class="header header-group">Basic Usage</h2>
+  <div class="window" style="max-width: 400px;">
+    <div class="title-bar">
+      <div class="title-bar-text">My Window</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body has-space">
+      <p>Window content goes here.</p>
+    </div>
+    <div class="status-bar">
+      <p class="status-bar-field">Ready</p>
+      <p class="status-bar-field">100%</p>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Glass Frame</h2>
+  <div class="window glass" style="max-width: 400px;">
+    <div class="title-bar">
+      <div class="title-bar-text">Aero Glass</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body has-space">
+      <p>Glass frame content.</p>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Dialog Box</h2>
+  <div class="window" role="dialog" style="max-width: 300px;">
+    <div class="title-bar">
+      <div class="title-bar-text">Confirm</div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body has-space">
+      <p>Are you sure you want to continue?</p>
+      <div style="display: flex; gap: 6px; justify-content: flex-end; margin-top: 16px;">
+        <button>OK</button>
+        <button>Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+
+  <h3>Window</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>variant</td><td>"default" | "glass"</td><td>"default"</td><td>Window frame style</td></tr>
+      <tr><td>role</td><td>string</td><td>-</td><td>ARIA role attribute</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TitleBar</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>title</td><td>string</td><td>required</td><td>Title bar text</td></tr>
+      <tr><td>controls</td><td>Array</td><td>["minimize","maximize","close"]</td><td>Control buttons to display</td></tr>
+      <tr><td>icon</td><td>string</td><td>-</td><td>Icon image src</td></tr>
+    </tbody>
+  </table>
+
+  <h3>WindowBody</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>hasSpace</td><td>boolean</td><td>false</td><td>Add inner padding</td></tr>
+    </tbody>
+  </table>
+
+  <h3>StatusBar</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>fields</td><td>string[]</td><td>required</td><td>Status bar field texts</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Getting Started">
+  <h1 class="header header-document">Getting Started</h1>
+
+  <h2 class="header header-group">1. Initialize</h2>
+  <p class="instruction">Run in your project root:</p>
+  <pre><code>npx win7ui init</code></pre>
+  <p class="instruction">Auto-detects your framework and creates <code>win7ui.config.json</code>.</p>
+
+  <h2 class="header header-group">2. Add Components</h2>
+  <pre><code>npx win7ui add button window tabs</code></pre>
+  <p class="instruction">Component source code is copied into your project.</p>
+
+  <h2 class="header header-group">3. Use</h2>
+  <pre><code>import &#123; Button &#125; from "./components/win7ui";</code></pre>
+
+  <h2 class="header header-group">4. List / Remove</h2>
+  <pre><code>npx win7ui list        # List all components
+npx win7ui remove tabs  # Remove a component</code></pre>
+</BaseLayout>

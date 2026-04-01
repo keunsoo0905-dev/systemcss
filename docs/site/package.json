@@ -1,0 +1,13 @@
+{
+  "name": "win7ui-docs",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "7.css": "^0.21.1"
+  }
+}
