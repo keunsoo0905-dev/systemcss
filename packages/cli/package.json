@@ -1,21 +1,49 @@
 {
   "name": "win7ui",
-  "version": "0.1.0",
-  "description": "Windows 7 UI component library - add components to your project",
+  "version": "1.0.0",
+  "description": "Windows 7 UI component library for React, Svelte, and Vue. Install components via CLI.",
+  "keywords": [
+    "windows-7",
+    "ui",
+    "components",
+    "react",
+    "svelte",
+    "vue",
+    "7.css",
+    "retro",
+    "aero",
+    "design-system",
+    "cli"
+  ],
+  "homepage": "https://github.com/user/win7ui",
+  "bugs": "https://github.com/user/win7ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/win7ui.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT",
+  "author": "",
   "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "bin": {
     "win7ui": "./dist/index.js"
   },
   "files": [
     "dist",
-    "registry"
+    "registry-snapshot",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsup src/index.ts --format esm --dts",
+    "build:registry": "tsx ../../scripts/build-registry.ts && cp -r ../../registry registry-snapshot",
+    "prepublishOnly": "pnpm build && pnpm build:registry",
     "test": "vitest run",
     "test:watch": "vitest",
-    "clean": "rm -rf dist"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "commander": "^13.1.0",
@@ -31,9 +59,11 @@
     "@types/node": "^22.12.0",
     "@types/semver": "^7.5.8",
     "tsup": "^8.4.0",
+    "tsx": "^4.0.0",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0"
   },
-  "keywords": ["windows-7", "ui", "components", "react", "svelte", "vue", "css"],
-  "license": "MIT"
+  "engines": {
+    "node": ">=18"
+  }
 }
