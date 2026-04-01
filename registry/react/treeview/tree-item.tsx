@@ -5,15 +5,22 @@ import { useTreeViewContext } from "./treeview";
 interface TreeItemProps {
   label: string;
   open?: boolean;
+  collapsible?: boolean;
   children?: React.ReactNode;
 }
 
-export function TreeItem({ label, open = false, children }: TreeItemProps) {
-  const { variant } = useTreeViewContext();
+export function TreeItem({
+  label,
+  open = false,
+  collapsible,
+  children,
+}: TreeItemProps) {
+  const { variants } = useTreeViewContext();
   const hasChildren = React.Children.count(children) > 0;
+  const isCollapseButton = variants.includes("collapse-button");
+  const shouldCollapse = (collapsible ?? isCollapseButton) && hasChildren;
 
-  // collapse-button 변형이고 자식이 있으면 details/summary 사용
-  if (variant === "collapse-button" && hasChildren) {
+  if (shouldCollapse) {
     return (
       <li>
         <details open={open}>
@@ -24,7 +31,6 @@ export function TreeItem({ label, open = false, children }: TreeItemProps) {
     );
   }
 
-  // 자식이 있으면 중첩 ul 렌더링
   if (hasChildren) {
     return (
       <li>
@@ -34,6 +40,5 @@ export function TreeItem({ label, open = false, children }: TreeItemProps) {
     );
   }
 
-  // 리프 노드
   return <li>{label}</li>;
 }

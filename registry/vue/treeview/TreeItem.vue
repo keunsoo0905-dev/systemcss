@@ -1,26 +1,30 @@
 <!-- registry/vue/treeview/TreeItem.vue -->
 <script setup lang="ts">
-import { inject, useSlots } from "vue";
+import { inject, useSlots, type Ref } from "vue";
 
 type TreeViewVariant = "default" | "container" | "collapse-button" | "connector";
 
 interface Props {
   label: string;
   open?: boolean;
+  collapsible?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   open: false,
+  collapsible: undefined,
 });
 
-const variant = inject<TreeViewVariant>("treeViewVariant", "default");
+const variants = inject<Ref<TreeViewVariant[]>>("treeViewVariants");
 const slots = useSlots();
 const hasChildren = !!slots.default;
+const isCollapseButton = variants?.value?.includes("collapse-button") ?? false;
+const shouldCollapse = (props.collapsible ?? isCollapseButton) && hasChildren;
 </script>
 
 <template>
-  <!-- collapse-button 변형 + 자식 있음 -->
-  <li v-if="variant === 'collapse-button' && hasChildren">
+  <!-- collapsible + 자식 있음 -->
+  <li v-if="shouldCollapse">
     <details :open="props.open">
       <summary>{{ props.label }}</summary>
       <ul>
@@ -40,88 +44,3 @@ const hasChildren = !!slots.default;
   <!-- 리프 노드 -->
   <li v-else>{{ props.label }}</li>
 </template>
-
-<style scoped>
-/* registry/css/treeview.css — 7.css treeview 원본 */
-
-ul.tree-view {
-  display: block;
-  font: 9pt Segoe UI, SegoeUI, Noto Sans, sans-serif;
-  margin: 0;
-  padding: 6px 6px 6px 20px;
-}
-
-ul.tree-view li {
-  list-style-type: none;
-  margin-top: 4px;
-  position: relative;
-}
-
-ul.tree-view a {
-  color: #000;
-  text-decoration: none;
-}
-
-ul.tree-view ul {
-  margin-top: 4px;
-  padding-left: 20px;
-}
-
-/* Container 변형 */
-ul.tree-view.has-container {
-  background: #fff;
-  border: 1px solid #8e8f8f;
-}
-
-/* Collapse Button 변형 (details/summary 기반) */
-ul.tree-view.has-collapse-button details > summary::-webkit-details-marker,
-ul.tree-view.has-collapse-button details > summary::marker {
-  display: none;
-}
-
-ul.tree-view.has-collapse-button details > summary:before {
-  background: linear-gradient(180deg, #f2f2f2 45%, #ebebeb);
-  border: 1px solid #919191;
-  border-radius: 1px;
-  color: #4b63a7;
-  content: "\002b";
-  font-size: 8pt;
-  font-weight: 700;
-  height: 8px;
-  left: -16px;
-  line-height: calc(12px - 50%);
-  margin: 0;
-  right: unset;
-  text-align: center;
-  top: calc(50% - 4px);
-  width: 8px;
-}
-
-ul.tree-view.has-collapse-button details[open] > summary:before {
-  content: "\2013";
-  transform: none;
-}
-
-/* Connector 변형 (점선 연결선) */
-ul.tree-view.has-connector ul {
-  position: relative;
-}
-
-ul.tree-view.has-connector ul:before {
-  border-left: 1px dotted #000;
-  content: "";
-  height: calc(100% - 8px);
-  left: 8px;
-  position: absolute;
-  top: 0;
-}
-
-ul.tree-view.has-connector ul li:before {
-  border-bottom: 1px dotted #000;
-  content: "";
-  position: absolute;
-  right: calc(100% + 2px);
-  top: 8px;
-  width: 10px;
-}
-</style>

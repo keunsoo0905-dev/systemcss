@@ -113,4 +113,61 @@ describe("TreeView", () => {
     // 최상위 ul + 2개 중첩 ul = 3개
     expect(deepItem.length).toBe(3);
   });
+
+  // Collapsible sections 테스트
+  it("renders details/summary with collapsible prop in non-collapse-button variant", () => {
+    const { container } = render(
+      <TreeView variant="container">
+        <TreeItem label="Collapsible" collapsible open>
+          <TreeItem label="Child" />
+        </TreeItem>
+      </TreeView>
+    );
+    const details = container.querySelector("details");
+    expect(details).not.toBeNull();
+    expect(details?.open).toBe(true);
+    const summary = container.querySelector("summary");
+    expect(summary?.textContent).toBe("Collapsible");
+  });
+
+  it("does not render details/summary without collapsible prop in container variant", () => {
+    const { container } = render(
+      <TreeView variant="container">
+        <TreeItem label="Static">
+          <TreeItem label="Child" />
+        </TreeItem>
+      </TreeView>
+    );
+    const details = container.querySelector("details");
+    expect(details).toBeNull();
+  });
+
+  it("supports combining variants as array", () => {
+    const { container } = render(
+      <TreeView variant={["container", "collapse-button", "connector"]}>
+        <TreeItem label="Parent" open>
+          <TreeItem label="Child" />
+        </TreeItem>
+      </TreeView>
+    );
+    const ul = container.querySelector("ul");
+    expect(ul?.classList.contains("hasContainer")).toBe(true);
+    expect(ul?.classList.contains("hasCollapseButton")).toBe(true);
+    expect(ul?.classList.contains("hasConnector")).toBe(true);
+    // collapse-button variant이므로 자동 collapsible
+    const details = container.querySelector("details");
+    expect(details).not.toBeNull();
+  });
+
+  it("collapsible=false overrides collapse-button variant", () => {
+    const { container } = render(
+      <TreeView variant="collapse-button">
+        <TreeItem label="Not Collapsible" collapsible={false}>
+          <TreeItem label="Child" />
+        </TreeItem>
+      </TreeView>
+    );
+    const details = container.querySelector("details");
+    expect(details).toBeNull();
+  });
 });

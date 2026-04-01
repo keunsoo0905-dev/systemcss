@@ -4,14 +4,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout title="TreeView">
   <h1 class="header header-document">TreeView</h1>
-  <p class="instruction">Windows 7 스타일 트리뷰. container, collapse-button, connector 변형을 지원합니다.</p>
+  <p class="instruction">Windows 7 스타일 트리뷰. container, collapse-button, connector 변형을 지원하며, collapsible sections으로 접고 펼 수 있습니다.</p>
 
   <h2 class="header header-group">Installation</h2>
   <pre><code>npx win7ui add treeview</code></pre>
 
-  <h2 class="header header-group">Demo</h2>
+  <h2 class="header header-group">Basic</h2>
+  <p class="instruction">기본 트리뷰 (정적, 항상 펼침 상태).</p>
   <div class="demo-box">
-    <ul class="tree-view" style="max-width: 250px;">
+    <ul class="tree-view has-container" style="max-width: 250px;">
       <li>Desktop
         <ul>
           <li>Documents
@@ -30,6 +31,90 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </ul>
   </div>
 
+  <h2 class="header header-group">Collapsible Sections</h2>
+  <p class="instruction"><code>details/summary</code> 요소로 접고 펼 수 있는 섹션을 만들 수 있습니다. 삼각형 화살표가 표시됩니다.</p>
+  <div class="demo-box">
+    <ul class="tree-view has-container" style="max-width: 300px;">
+      <li>Table of Contents</li>
+      <li>What is web development?</li>
+      <li>
+        CSS
+        <ul>
+          <li>Selectors</li>
+          <li>Specificity</li>
+          <li>Properties</li>
+        </ul>
+      </li>
+      <li>
+        <details open>
+          <summary>JavaScript</summary>
+          <ul>
+            <li>Avoid at all costs</li>
+            <li>
+              <details>
+                <summary>Unless</summary>
+                <ul>
+                  <li>Avoid</li>
+                  <li>
+                    <details>
+                      <summary>At</summary>
+                      <ul>
+                        <li>Avoid</li>
+                        <li>At</li>
+                        <li>All</li>
+                        <li>Cost</li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>All</li>
+                  <li>Cost</li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </details>
+      </li>
+      <li>HTML</li>
+      <li>Special Thanks</li>
+    </ul>
+  </div>
+
+  <h2 class="header header-group">Collapse Button + Connector</h2>
+  <p class="instruction"><code>has-collapse-button</code>과 <code>has-connector</code>를 조합하면 +/− 버튼과 점선 연결선이 표시됩니다.</p>
+  <div class="demo-box">
+    <ul class="tree-view has-collapse-button has-connector has-container" style="max-width: 300px;">
+      <li>
+        <details open>
+          <summary>JavaScript</summary>
+          <ul>
+            <li>Avoid at all costs</li>
+            <li>
+              <details>
+                <summary>Unless</summary>
+                <ul>
+                  <li>Avoid</li>
+                  <li>
+                    <details>
+                      <summary>At</summary>
+                      <ul>
+                        <li>Avoid</li>
+                        <li>At</li>
+                        <li>All</li>
+                        <li>Cost</li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>All</li>
+                  <li>Cost</li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+
   <h2 class="header header-group">Usage</h2>
   <div class="code-tabs">
     <menu role="tablist">
@@ -40,7 +125,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div role="tabpanel" id="tv-react" class="active">
       <pre><code><span class="kw">import</span> &#123; <span class="ty">TreeView</span>, <span class="ty">TreeItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/treeview"</span>;
 
-&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"collapse-button"</span>&gt;
+<span class="cm">// Basic collapsible (삼각형 화살표)</span>
+&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"container"</span>&gt;
+  &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Static item"</span>&gt;
+    &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Always visible"</span> /&gt;
+  &lt;/<span class="ty">TreeItem</span>&gt;
+  &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Collapsible"</span> <span class="fn">collapsible</span> <span class="fn">open</span>&gt;
+    &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Click to toggle"</span> /&gt;
+  &lt;/<span class="ty">TreeItem</span>&gt;
+&lt;/<span class="ty">TreeView</span>&gt;
+
+<span class="cm">// Collapse button + connector + container 조합</span>
+&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=&#123;[<span class="str">"container"</span>, <span class="str">"collapse-button"</span>, <span class="str">"connector"</span>]&#125;&gt;
   &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Desktop"</span> <span class="fn">open</span>&gt;
     &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Documents"</span>&gt;
       &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"report.docx"</span> /&gt;
@@ -53,7 +149,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <span class="kw">import</span> &#123; <span class="ty">TreeView</span>, <span class="ty">TreeItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/treeview"</span>;
 &lt;/<span class="kw">script</span>&gt;
 
-&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"collapse-button"</span>&gt;
+<span class="cm">&lt;!-- Basic collapsible --&gt;</span>
+&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"container"</span>&gt;
+  &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Collapsible"</span> <span class="fn">collapsible</span> <span class="fn">open</span>&gt;
+    &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Click to toggle"</span> /&gt;
+  &lt;/<span class="ty">TreeItem</span>&gt;
+&lt;/<span class="ty">TreeView</span>&gt;
+
+<span class="cm">&lt;!-- Combined variants --&gt;</span>
+&lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=&#123;[<span class="str">"container"</span>, <span class="str">"collapse-button"</span>, <span class="str">"connector"</span>]&#125;&gt;
   &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Desktop"</span> <span class="fn">open</span>&gt;
     &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"report.docx"</span> /&gt;
   &lt;/<span class="ty">TreeItem</span>&gt;
@@ -65,7 +169,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 &lt;/<span class="kw">script</span>&gt;
 
 &lt;<span class="kw">template</span>&gt;
-  &lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"collapse-button"</span>&gt;
+  <span class="cm">&lt;!-- Basic collapsible --&gt;</span>
+  &lt;<span class="ty">TreeView</span> <span class="fn">variant</span>=<span class="str">"container"</span>&gt;
+    &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Collapsible"</span> <span class="fn">collapsible</span> <span class="fn">open</span>&gt;
+      &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Click to toggle"</span> /&gt;
+    &lt;/<span class="ty">TreeItem</span>&gt;
+  &lt;/<span class="ty">TreeView</span>&gt;
+
+  <span class="cm">&lt;!-- Combined variants --&gt;</span>
+  &lt;<span class="ty">TreeView</span> <span class="fn">:variant</span>=<span class="str">"['container', 'collapse-button', 'connector']"</span>&gt;
     &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"Desktop"</span> <span class="fn">open</span>&gt;
       &lt;<span class="ty">TreeItem</span> <span class="fn">label</span>=<span class="str">"report.docx"</span> /&gt;
     &lt;/<span class="ty">TreeItem</span>&gt;
@@ -79,7 +191,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <table>
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td>variant</td><td><code>"default" | "container" | "collapse-button" | "connector"</code></td><td><code>"default"</code></td><td>Tree view visual style</td></tr>
+      <tr><td>variant</td><td><code>TreeViewVariant | TreeViewVariant[]</code></td><td><code>"default"</code></td><td>Tree view visual style(s). 배열로 조합 가능</td></tr>
       <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
     </tbody>
   </table>
@@ -88,7 +200,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
       <tr><td>label</td><td><code>string</code></td><td>required</td><td>Item label text</td></tr>
-      <tr><td>open</td><td><code>boolean</code></td><td><code>false</code></td><td>Initially expanded (collapse-button variant)</td></tr>
+      <tr><td>open</td><td><code>boolean</code></td><td><code>false</code></td><td>Initially expanded (collapsible items)</td></tr>
+      <tr><td>collapsible</td><td><code>boolean</code></td><td><code>undefined</code></td><td>명시적으로 collapsible 활성화. collapse-button variant에서는 자동</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TreeViewVariant</h3>
+  <table>
+    <thead><tr><th>Value</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>"default"</code></td><td>기본 스타일</td></tr>
+      <tr><td><code>"container"</code></td><td>흰색 배경 + 테두리</td></tr>
+      <tr><td><code>"collapse-button"</code></td><td>+/− 버튼으로 접기/펼치기 (모든 자식 있는 아이템 자동 collapsible)</td></tr>
+      <tr><td><code>"connector"</code></td><td>점선 연결선</td></tr>
     </tbody>
   </table>
 </BaseLayout>

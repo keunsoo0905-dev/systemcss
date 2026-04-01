@@ -4,18 +4,18 @@
 
   const TREE_VIEW_KEY = Symbol("tree-view");
 
-  export function setTreeViewContext(variant) {
-    setContext(TREE_VIEW_KEY, { variant });
+  export function setTreeViewContext(variants) {
+    setContext(TREE_VIEW_KEY, { variants });
   }
 
   export function getTreeViewContext() {
-    return getContext(TREE_VIEW_KEY) ?? { variant: "default" };
+    return getContext(TREE_VIEW_KEY) ?? { variants: ["default"] };
   }
 </script>
 
 <script>
   /**
-   * @type {{ variant?: "default" | "container" | "collapse-button" | "connector", class?: string, children?: import("svelte").Snippet }}
+   * @type {{ variant?: ("default" | "container" | "collapse-button" | "connector") | ("default" | "container" | "collapse-button" | "connector")[], class?: string, children?: import("svelte").Snippet }}
    */
   let {
     variant = "default",
@@ -23,7 +23,8 @@
     children,
   } = $props();
 
-  setTreeViewContext(variant);
+  const variants = Array.isArray(variant) ? variant : [variant];
+  setTreeViewContext(variants);
 
   const variantClasses = {
     default: "",
@@ -31,9 +32,11 @@
     "collapse-button": "has-collapse-button",
     connector: "has-connector",
   };
+
+  const variantClassStr = variants.map((v) => variantClasses[v]).filter(Boolean).join(" ");
 </script>
 
-<ul class="tree-view {variantClasses[variant]} {className ?? ''}">
+<ul class="tree-view {variantClassStr} {className ?? ''}">
   {#if children}
     {@render children()}
   {/if}
@@ -71,12 +74,36 @@ ul.tree-view.has-container {
   border: 1px solid #8e8f8f;
 }
 
-/* Collapse Button 변형 (details/summary 기반) */
-ul.tree-view.has-collapse-button details > summary::-webkit-details-marker,
-ul.tree-view.has-collapse-button details > summary::marker {
+/* Collapsible 기본 스타일 (details/summary 삼각형 화살표) */
+ul.tree-view details > summary {
+  cursor: pointer;
+  display: inline;
+  list-style: none;
+  margin-bottom: 0;
+  position: relative;
+}
+
+ul.tree-view details > summary::-webkit-details-marker,
+ul.tree-view details > summary::marker {
   display: none;
 }
 
+ul.tree-view details > summary:before {
+  border: 4px solid transparent;
+  border-left-color: #000;
+  border-radius: 3px;
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: calc(50% - 4px);
+}
+
+ul.tree-view details[open] > summary:before {
+  top: calc(50% - 2px);
+  transform: rotate(45deg);
+}
+
+/* Collapse Button 변형 (+/− 버튼으로 삼각형 오버라이드) */
 ul.tree-view.has-collapse-button details > summary:before {
   background: linear-gradient(180deg, #f2f2f2 45%, #ebebeb);
   border: 1px solid #919191;

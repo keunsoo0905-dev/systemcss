@@ -1,10 +1,10 @@
 <!-- registry/svelte/treeview/__tests__/TreeViewTest.svelte -->
 <script lang="ts">
-  import TreeView from "../TreeView.svelte";
+  import TreeView, { type TreeViewVariant } from "../TreeView.svelte";
   import TreeItem from "../TreeItem.svelte";
 
   interface Props {
-    variant?: "default" | "container" | "collapse-button" | "connector";
+    variant?: TreeViewVariant | TreeViewVariant[];
   }
 
   let { variant = "default" }: Props = $props();

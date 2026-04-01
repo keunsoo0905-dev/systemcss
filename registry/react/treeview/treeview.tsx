@@ -5,11 +5,11 @@ import styles from "../css/treeview.module.css";
 type TreeViewVariant = "default" | "container" | "collapse-button" | "connector";
 
 interface TreeViewContextValue {
-  variant: TreeViewVariant;
+  variants: TreeViewVariant[];
 }
 
 export const TreeViewContext = createContext<TreeViewContextValue>({
-  variant: "default",
+  variants: ["default"],
 });
 
 export function useTreeViewContext() {
@@ -17,7 +17,7 @@ export function useTreeViewContext() {
 }
 
 interface TreeViewProps extends React.HTMLAttributes<HTMLUListElement> {
-  variant?: TreeViewVariant;
+  variant?: TreeViewVariant | TreeViewVariant[];
 }
 
 export function TreeView({
@@ -26,19 +26,25 @@ export function TreeView({
   children,
   ...props
 }: TreeViewProps) {
-  const variantClass = {
+  const variants = Array.isArray(variant) ? variant : [variant];
+
+  const variantClassMap: Record<TreeViewVariant, string> = {
     default: "",
     container: styles.hasContainer,
     "collapse-button": styles.hasCollapseButton,
     connector: styles.hasConnector,
-  }[variant];
+  };
 
-  const classNames = [styles.treeView, variantClass, className ?? ""]
+  const classNames = [
+    styles.treeView,
+    ...variants.map((v) => variantClassMap[v]).filter(Boolean),
+    className ?? "",
+  ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <TreeViewContext.Provider value={{ variant }}>
+    <TreeViewContext.Provider value={{ variants }}>
       <ul className={classNames} {...props}>
         {children}
       </ul>
