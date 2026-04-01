@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Button">
+  <h1 class="header header-document">Button</h1>
+  <p class="instruction">Windows 7 스타일 푸시 버튼. Primary 변형을 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add button</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+      <button>Default</button>
+      <button style="font-weight: 700;">Primary</button>
+      <button disabled>Disabled</button>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="btn-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="btn-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="btn-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="btn-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+
+<span class="kw">function</span> <span class="fn">App</span>() &#123;
+  <span class="kw">return</span> (
+    &lt;<span class="ty">div</span>&gt;
+      &lt;<span class="ty">Button</span>&gt;Default&lt;/<span class="ty">Button</span>&gt;
+      &lt;<span class="ty">Button</span> <span class="fn">variant</span>=<span class="str">"primary"</span>&gt;Primary&lt;/<span class="ty">Button</span>&gt;
+      &lt;<span class="ty">Button</span> <span class="fn">disabled</span>&gt;Disabled&lt;/<span class="ty">Button</span>&gt;
+    &lt;/<span class="ty">div</span>&gt;
+  );
+&#125;</code></pre>
+    </div>
+    <div role="tabpanel" id="btn-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Button</span>&gt;Default&lt;/<span class="ty">Button</span>&gt;
+&lt;<span class="ty">Button</span> <span class="fn">variant</span>=<span class="str">"primary"</span>&gt;Primary&lt;/<span class="ty">Button</span>&gt;
+&lt;<span class="ty">Button</span> <span class="fn">disabled</span>&gt;Disabled&lt;/<span class="ty">Button</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="btn-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Button</span>&gt;Default&lt;/<span class="ty">Button</span>&gt;
+  &lt;<span class="ty">Button</span> <span class="fn">variant</span>=<span class="str">"primary"</span>&gt;Primary&lt;/<span class="ty">Button</span>&gt;
+  &lt;<span class="ty">Button</span> <span class="fn">disabled</span>&gt;Disabled&lt;/<span class="ty">Button</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>variant</td><td><code>"default" | "primary"</code></td><td><code>"default"</code></td><td>Button style variant</td></tr>
+      <tr><td>disabled</td><td><code>boolean</code></td><td><code>false</code></td><td>Disable the button</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Extends <code>React.ButtonHTMLAttributes</code> — all native button attributes are supported.</p>
+</BaseLayout>

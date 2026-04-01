@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="MenuBar">
+  <h1 class="header header-document">MenuBar</h1>
+  <p class="instruction">Windows 7 스타일 수평 메뉴 바. <code>menu</code> 컴포넌트에 의존합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add menubar  <span class="cm"># menu도 자동 설치됨</span></code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <ul role="menubar" style="display: flex; gap: 0; background: #f0f0f0; border: 1px solid #d5d5d5; padding: 2px; list-style: none; margin: 0;">
+      <li role="menuitem" tabindex="0" style="padding: 2px 8px; cursor: pointer;">File</li>
+      <li role="menuitem" tabindex="0" style="padding: 2px 8px; cursor: pointer;">Edit</li>
+      <li role="menuitem" tabindex="0" style="padding: 2px 8px; cursor: pointer;">View</li>
+      <li role="menuitem" tabindex="0" style="padding: 2px 8px; cursor: pointer;">Help</li>
+    </ul>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="mb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="mb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="mb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="mb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">MenuBar</span>, <span class="ty">MenuBarItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menubar"</span>;
+<span class="kw">import</span> &#123; <span class="ty">Menu</span>, <span class="ty">MenuItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menu"</span>;
+
+&lt;<span class="ty">MenuBar</span>&gt;
+  &lt;<span class="ty">MenuBarItem</span> <span class="fn">label</span>=<span class="str">"File"</span>&gt;
+    &lt;<span class="ty">Menu</span>&gt;
+      &lt;<span class="ty">MenuItem</span>&gt;New&lt;/<span class="ty">MenuItem</span>&gt;
+      &lt;<span class="ty">MenuItem</span>&gt;Open&lt;/<span class="ty">MenuItem</span>&gt;
+    &lt;/<span class="ty">Menu</span>&gt;
+  &lt;/<span class="ty">MenuBarItem</span>&gt;
+  &lt;<span class="ty">MenuBarItem</span> <span class="fn">label</span>=<span class="str">"Edit"</span> /&gt;
+&lt;/<span class="ty">MenuBar</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="mb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">MenuBar</span>, <span class="ty">MenuBarItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menubar"</span>;
+  <span class="kw">import</span> &#123; <span class="ty">Menu</span>, <span class="ty">MenuItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menu"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">MenuBar</span>&gt;
+  &lt;<span class="ty">MenuBarItem</span> <span class="fn">label</span>=<span class="str">"File"</span>&gt;
+    &lt;<span class="ty">Menu</span>&gt;&lt;<span class="ty">MenuItem</span>&gt;New&lt;/<span class="ty">MenuItem</span>&gt;&lt;/<span class="ty">Menu</span>&gt;
+  &lt;/<span class="ty">MenuBarItem</span>&gt;
+&lt;/<span class="ty">MenuBar</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="mb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">MenuBar</span>, <span class="ty">MenuBarItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menubar"</span>;
+<span class="kw">import</span> &#123; <span class="ty">Menu</span>, <span class="ty">MenuItem</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/menu"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">MenuBar</span>&gt;
+    &lt;<span class="ty">MenuBarItem</span> <span class="fn">label</span>=<span class="str">"File"</span>&gt;
+      &lt;<span class="ty">Menu</span>&gt;&lt;<span class="ty">MenuItem</span>&gt;New&lt;/<span class="ty">MenuItem</span>&gt;&lt;/<span class="ty">Menu</span>&gt;
+    &lt;/<span class="ty">MenuBarItem</span>&gt;
+  &lt;/<span class="ty">MenuBar</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <h3>MenuBar</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <h3>MenuBarItem</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>label</td><td><code>string</code></td><td>required</td><td>Menu bar item text</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Depends on <code>menu</code> component. Install with <code>npx win7ui add menubar</code>.</p>
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Slider">
+  <h1 class="header header-document">Slider</h1>
+  <p class="instruction">Windows 7 스타일 슬라이더 (range input). 수평/수직 모드와 box indicator 변형을 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add slider</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 300px;">
+      <div>
+        <p class="instruction" style="margin-bottom: 4px;">Horizontal</p>
+        <input type="range" min="0" max="100" value="50" style="width: 100%;" />
+      </div>
+      <div>
+        <p class="instruction" style="margin-bottom: 4px;">Vertical</p>
+        <input type="range" min="0" max="100" value="70" orient="vertical" style="height: 80px;" />
+      </div>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="sl-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="sl-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="sl-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="sl-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Slider</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/slider"</span>;
+
+&lt;<span class="ty">Slider</span> <span class="fn">min</span>=&#123;<span class="num">0</span>&#125; <span class="fn">max</span>=&#123;<span class="num">100</span>&#125; <span class="fn">defaultValue</span>=&#123;<span class="num">50</span>&#125; /&gt;
+&lt;<span class="ty">Slider</span> <span class="fn">orientation</span>=<span class="str">"vertical"</span> /&gt;
+&lt;<span class="ty">Slider</span> <span class="fn">variant</span>=<span class="str">"box-indicator"</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="sl-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Slider</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/slider"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Slider</span> <span class="fn">min</span>=&#123;<span class="num">0</span>&#125; <span class="fn">max</span>=&#123;<span class="num">100</span>&#125; /&gt;
+&lt;<span class="ty">Slider</span> <span class="fn">orientation</span>=<span class="str">"vertical"</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="sl-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Slider</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/slider"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Slider</span> <span class="fn">:min</span>=<span class="str">"0"</span> <span class="fn">:max</span>=<span class="str">"100"</span> /&gt;
+  &lt;<span class="ty">Slider</span> <span class="fn">orientation</span>=<span class="str">"vertical"</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>orientation</td><td><code>"horizontal" | "vertical"</code></td><td><code>"horizontal"</code></td><td>Slider direction</td></tr>
+      <tr><td>variant</td><td><code>"default" | "box-indicator"</code></td><td><code>"default"</code></td><td>Indicator style</td></tr>
+      <tr><td>min</td><td><code>number</code></td><td>-</td><td>Minimum value</td></tr>
+      <tr><td>max</td><td><code>number</code></td><td>-</td><td>Maximum value</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Extends <code>React.InputHTMLAttributes&lt;HTMLInputElement&gt;</code>.</p>
+</BaseLayout>

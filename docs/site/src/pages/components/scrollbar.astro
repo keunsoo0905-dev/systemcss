@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Scrollbar">
+  <h1 class="header header-document">Scrollbar</h1>
+  <p class="instruction">Windows 7 스타일 커스텀 스크롤바. 스크롤 영역을 감싸는 래퍼 컴포넌트입니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add scrollbar</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="height: 100px; overflow-y: auto; max-width: 300px; border: 1px solid #d5d5d5; padding: 8px;">
+      <p>Line 1: Scrollable content</p>
+      <p>Line 2: More content here</p>
+      <p>Line 3: Even more content</p>
+      <p>Line 4: Keep scrolling</p>
+      <p>Line 5: Almost there</p>
+      <p>Line 6: Last line</p>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="scr-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="scr-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="scr-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="scr-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Scrollbar</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/scrollbar"</span>;
+
+&lt;<span class="ty">Scrollbar</span> <span class="fn">direction</span>=<span class="str">"vertical"</span> <span class="fn">style</span>=&#123;&#123; <span class="fn">height</span>: <span class="str">"200px"</span> &#125;&#125;&gt;
+  &lt;p&gt;Scrollable content...&lt;/p&gt;
+&lt;/<span class="ty">Scrollbar</span>&gt;
+
+&lt;<span class="ty">Scrollbar</span> <span class="fn">direction</span>=<span class="str">"both"</span>&gt;
+  &lt;p&gt;Scrolls in both directions&lt;/p&gt;
+&lt;/<span class="ty">Scrollbar</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="scr-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Scrollbar</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/scrollbar"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Scrollbar</span> <span class="fn">direction</span>=<span class="str">"vertical"</span> <span class="fn">style</span>=<span class="str">"height: 200px"</span>&gt;
+  &lt;p&gt;Scrollable content...&lt;/p&gt;
+&lt;/<span class="ty">Scrollbar</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="scr-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Scrollbar</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/scrollbar"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Scrollbar</span> <span class="fn">direction</span>=<span class="str">"vertical"</span> <span class="fn">style</span>=<span class="str">"height: 200px"</span>&gt;
+    &lt;p&gt;Scrollable content...&lt;/p&gt;
+  &lt;/<span class="ty">Scrollbar</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>direction</td><td><code>"vertical" | "horizontal" | "both"</code></td><td><code>"vertical"</code></td><td>Scroll direction</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+      <tr><td>style</td><td><code>CSSProperties</code></td><td>-</td><td>Inline styles (set height/width)</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

@@ -4,20 +4,129 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout title="Getting Started">
   <h1 class="header header-document">Getting Started</h1>
+  <p class="instruction">
+    win7ui는 Windows 7 스타일 UI 컴포넌트 라이브러리입니다.<br />
+    shadcn/ui처럼 CLI로 컴포넌트 소스를 프로젝트에 직접 복사합니다.
+  </p>
+
+  <h2 class="header header-group">Prerequisites</h2>
+  <ul>
+    <li>Node.js 18 이상</li>
+    <li>React 18+, Svelte 5, 또는 Vue 3 프로젝트</li>
+    <li>npm, pnpm, 또는 yarn</li>
+  </ul>
 
   <h2 class="header header-group">1. Initialize</h2>
-  <p class="instruction">Run in your project root:</p>
+  <p class="instruction">프로젝트 루트에서 실행하세요:</p>
   <pre><code>npx win7ui init</code></pre>
-  <p class="instruction">Auto-detects your framework and creates <code>win7ui.config.json</code>.</p>
+  <p class="instruction">
+    CLI가 자동으로 프레임워크를 감지하고 <code>win7ui.config.json</code>을 생성합니다.
+    TypeScript/JavaScript도 자동으로 감지합니다.
+  </p>
+
+  <fieldset>
+    <legend>win7ui.config.json</legend>
+    <pre><code>&#123;
+  <span class="str">"framework"</span>: <span class="str">"react"</span>,
+  <span class="str">"language"</span>: <span class="str">"ts"</span>,
+  <span class="str">"componentsDir"</span>: <span class="str">"src/components/win7ui"</span>
+&#125;</code></pre>
+  </fieldset>
 
   <h2 class="header header-group">2. Add Components</h2>
-  <pre><code>npx win7ui add button window tabs</code></pre>
-  <p class="instruction">Component source code is copied into your project.</p>
+  <p class="instruction">필요한 컴포넌트만 선택하여 설치합니다:</p>
+  <pre><code><span class="cm"># 하나씩 설치</span>
+npx win7ui add button
 
-  <h2 class="header header-group">3. Use</h2>
-  <pre><code>import &#123; Button &#125; from "./components/win7ui";</code></pre>
+<span class="cm"># 여러 개 동시 설치</span>
+npx win7ui add button window tabs progressbar
 
-  <h2 class="header header-group">4. List / Remove</h2>
-  <pre><code>npx win7ui list        # List all components
-npx win7ui remove tabs  # Remove a component</code></pre>
+<span class="cm"># 의존성이 있는 컴포넌트는 자동으로 함께 설치</span>
+npx win7ui add menubar  <span class="cm"># → menu도 함께 설치됨</span></code></pre>
+
+  <h2 class="header header-group">3. Use Components</h2>
+
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="usage-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="usage-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="usage-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="usage-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+<span class="kw">import</span> &#123; <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+
+<span class="kw">export default function</span> <span class="fn">App</span>() &#123;
+  <span class="kw">return</span> (
+    &lt;<span class="ty">Window</span>&gt;
+      &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+      &lt;<span class="ty">WindowBody</span> <span class="fn">hasSpace</span>&gt;
+        &lt;<span class="ty">Button</span>&gt;Click me&lt;/<span class="ty">Button</span>&gt;
+      &lt;/<span class="ty">WindowBody</span>&gt;
+    &lt;/<span class="ty">Window</span>&gt;
+  );
+&#125;</code></pre>
+    </div>
+    <div role="tabpanel" id="usage-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+  <span class="kw">import</span> &#123; <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Window</span>&gt;
+  &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+  &lt;<span class="ty">WindowBody</span> <span class="fn">hasSpace</span>&gt;
+    &lt;<span class="ty">Button</span>&gt;Click me&lt;/<span class="ty">Button</span>&gt;
+  &lt;/<span class="ty">WindowBody</span>&gt;
+&lt;/<span class="ty">Window</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="usage-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Button</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/button"</span>;
+<span class="kw">import</span> &#123; <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Window</span>&gt;
+    &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+    &lt;<span class="ty">WindowBody</span> <span class="fn">has-space</span>&gt;
+      &lt;<span class="ty">Button</span>&gt;Click me&lt;/<span class="ty">Button</span>&gt;
+    &lt;/<span class="ty">WindowBody</span>&gt;
+  &lt;/<span class="ty">Window</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">4. Manage Components</h2>
+  <pre><code><span class="cm"># 설치 가능한 전체 컴포넌트 목록</span>
+npx win7ui list
+
+<span class="cm"># 컴포넌트 제거</span>
+npx win7ui remove tabs
+
+<span class="cm"># 도움말</span>
+npx win7ui --help</code></pre>
+
+  <h2 class="header header-group">5. Project Structure</h2>
+  <p class="instruction">컴포넌트 설치 후 프로젝트 구조:</p>
+  <pre><code>your-project/
+├── src/
+│   ├── components/
+│   │   └── win7ui/          <span class="cm"># win7ui 컴포넌트</span>
+│   │       ├── css/         <span class="cm"># 컴포넌트 CSS</span>
+│   │       │   ├── base.css
+│   │       │   └── button.module.css
+│   │       ├── button.tsx   <span class="cm"># 컴포넌트 소스</span>
+│   │       └── window/
+│   │           ├── window.tsx
+│   │           ├── title-bar.tsx
+│   │           └── ...
+│   └── App.tsx
+└── win7ui.config.json       <span class="cm"># 설정 파일</span></code></pre>
+
+  <h2 class="header header-group">Next</h2>
+  <p class="instruction">
+    컴포넌트 목록을 확인하려면 사이드바에서 원하는 컴포넌트를 선택하세요.<br />
+    각 컴포넌트 페이지에서 라이브 데모, 사용법, Props API를 확인할 수 있습니다.
+  </p>
 </BaseLayout>

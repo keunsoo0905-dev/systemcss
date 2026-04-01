@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="SearchBox">
+  <h1 class="header header-document">SearchBox</h1>
+  <p class="instruction">Windows 7 스타일 검색 입력 컴포넌트. Enter 키 또는 검색 버튼으로 검색을 트리거합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add searchbox</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="max-width: 300px;">
+      <input type="search" placeholder="Search..." style="width: 100%;" />
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="sb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="sb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="sb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="sb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">SearchBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/searchbox"</span>;
+
+&lt;<span class="ty">SearchBox</span>
+  <span class="fn">placeholder</span>=<span class="str">"Search files..."</span>
+  <span class="fn">onSearch</span>=&#123;(<span class="fn">query</span>) =&gt; <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">query</span>)&#125;
+/&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="sb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">SearchBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/searchbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">SearchBox</span> <span class="fn">placeholder</span>=<span class="str">"Search files..."</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="sb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">SearchBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/searchbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">SearchBox</span> <span class="fn">placeholder</span>=<span class="str">"Search files..."</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>value</td><td><code>string</code></td><td>-</td><td>Controlled input value</td></tr>
+      <tr><td>onChange</td><td><code>(e: ChangeEvent) =&gt; void</code></td><td>-</td><td>Input change handler</td></tr>
+      <tr><td>onSearch</td><td><code>(query: string) =&gt; void</code></td><td>-</td><td>Search trigger callback (Enter or button click)</td></tr>
+      <tr><td>placeholder</td><td><code>string</code></td><td>-</td><td>Placeholder text</td></tr>
+      <tr><td>disabled</td><td><code>boolean</code></td><td><code>false</code></td><td>Disable the search box</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="ComboBox">
+  <h1 class="header header-document">ComboBox</h1>
+  <p class="instruction">Windows 7 스타일 콤보박스. 텍스트 입력과 드롭다운 목록을 결합하여 필터링 검색을 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add combobox</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="max-width: 250px;">
+      <input type="text" placeholder="Type to filter..." style="width: 100%;" />
+      <p class="instruction" style="margin-top: 6px; font-size: 11px;">ComboBox combines text input with a filterable dropdown list.</p>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="cmb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="cmb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="cmb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="cmb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">ComboBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/combobox"</span>;
+
+&lt;<span class="ty">ComboBox</span>
+  <span class="fn">placeholder</span>=<span class="str">"Search..."</span>
+  <span class="fn">options</span>=&#123;[
+    &#123; <span class="fn">value</span>: <span class="str">"apple"</span>, <span class="fn">label</span>: <span class="str">"Apple"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"banana"</span>, <span class="fn">label</span>: <span class="str">"Banana"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"cherry"</span>, <span class="fn">label</span>: <span class="str">"Cherry"</span> &#125;,
+  ]&#125;
+  <span class="fn">onValueChange</span>=&#123;(<span class="fn">val</span>) =&gt; <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">val</span>)&#125;
+/&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="cmb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">ComboBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/combobox"</span>;
+  <span class="kw">const</span> options = [
+    &#123; value: <span class="str">"apple"</span>, label: <span class="str">"Apple"</span> &#125;,
+    &#123; value: <span class="str">"banana"</span>, label: <span class="str">"Banana"</span> &#125;,
+  ];
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">ComboBox</span> &#123;options&#125; <span class="fn">placeholder</span>=<span class="str">"Search..."</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="cmb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">ComboBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/combobox"</span>;
+<span class="kw">const</span> options = [
+  &#123; value: <span class="str">"apple"</span>, label: <span class="str">"Apple"</span> &#125;,
+  &#123; value: <span class="str">"banana"</span>, label: <span class="str">"Banana"</span> &#125;,
+];
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">ComboBox</span> <span class="fn">:options</span>=<span class="str">"options"</span> <span class="fn">placeholder</span>=<span class="str">"Search..."</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>options</td><td><code>ComboBoxOption[]</code></td><td>required</td><td>Array of &#123; value, label, disabled? &#125;</td></tr>
+      <tr><td>value</td><td><code>string</code></td><td>-</td><td>Controlled selected value</td></tr>
+      <tr><td>onValueChange</td><td><code>(value: string) =&gt; void</code></td><td>-</td><td>Callback on value change</td></tr>
+      <tr><td>placeholder</td><td><code>string</code></td><td>-</td><td>Placeholder text</td></tr>
+      <tr><td>disabled</td><td><code>boolean</code></td><td><code>false</code></td><td>Disable the combobox</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

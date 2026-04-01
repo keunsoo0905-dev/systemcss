@@ -5,60 +5,122 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout title="Window">
   <h1 class="header header-document">Window</h1>
   <p class="instruction">
-    Windows 7 window frame. Compose with TitleBar, WindowBody, StatusBar, GlassFrame, and DialogBox.
+    Windows 7 윈도우 프레임. TitleBar, WindowBody, StatusBar, GlassFrame, DialogBox 하위 컴포넌트를 포함합니다.
   </p>
 
   <h2 class="header header-group">Installation</h2>
   <pre><code>npx win7ui add window</code></pre>
 
-  <h2 class="header header-group">Basic Usage</h2>
-  <div class="window" style="max-width: 400px;">
-    <div class="title-bar">
-      <div class="title-bar-text">My Window</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
+  <h2 class="header header-group">Demo</h2>
+
+  <h3>Basic Window</h3>
+  <div class="demo-box">
+    <div class="window" style="max-width: 400px;">
+      <div class="title-bar">
+        <div class="title-bar-text">My Window</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
       </div>
-    </div>
-    <div class="window-body has-space">
-      <p>Window content goes here.</p>
-    </div>
-    <div class="status-bar">
-      <p class="status-bar-field">Ready</p>
-      <p class="status-bar-field">100%</p>
+      <div class="window-body has-space">
+        <p>Window content goes here.</p>
+      </div>
+      <div class="status-bar">
+        <p class="status-bar-field">Ready</p>
+        <p class="status-bar-field">100%</p>
+      </div>
     </div>
   </div>
 
-  <h2 class="header header-group">Glass Frame</h2>
-  <div class="window glass" style="max-width: 400px;">
-    <div class="title-bar">
-      <div class="title-bar-text">Aero Glass</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
+  <h3>Glass Frame</h3>
+  <div class="demo-box">
+    <div class="window glass" style="max-width: 400px;">
+      <div class="title-bar">
+        <div class="title-bar-text">Aero Glass</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
       </div>
-    </div>
-    <div class="window-body has-space">
-      <p>Glass frame content.</p>
+      <div class="window-body has-space">
+        <p>Glass frame content.</p>
+      </div>
     </div>
   </div>
 
-  <h2 class="header header-group">Dialog Box</h2>
-  <div class="window" role="dialog" style="max-width: 300px;">
-    <div class="title-bar">
-      <div class="title-bar-text">Confirm</div>
-      <div class="title-bar-controls">
-        <button aria-label="Close"></button>
+  <h3>Dialog Box</h3>
+  <div class="demo-box">
+    <div class="window" role="dialog" style="max-width: 300px;">
+      <div class="title-bar">
+        <div class="title-bar-text">Confirm</div>
+        <div class="title-bar-controls">
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body has-space">
+        <p>Are you sure you want to continue?</p>
+        <div style="display: flex; gap: 6px; justify-content: flex-end; margin-top: 16px;">
+          <button>OK</button>
+          <button>Cancel</button>
+        </div>
       </div>
     </div>
-    <div class="window-body has-space">
-      <p>Are you sure you want to continue?</p>
-      <div style="display: flex; gap: 6px; justify-content: flex-end; margin-top: 16px;">
-        <button>OK</button>
-        <button>Cancel</button>
-      </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="win-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="win-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="win-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="win-react" class="active">
+      <pre><code><span class="kw">import</span> &#123;
+  <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span>, <span class="ty">StatusBar</span>,
+  <span class="ty">GlassFrame</span>, <span class="ty">DialogBox</span>
+&#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+
+<span class="cm">// Basic Window</span>
+&lt;<span class="ty">Window</span>&gt;
+  &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+  &lt;<span class="ty">WindowBody</span> <span class="fn">hasSpace</span>&gt;Content&lt;/<span class="ty">WindowBody</span>&gt;
+  &lt;<span class="ty">StatusBar</span> <span class="fn">fields</span>=&#123;[<span class="str">"Ready"</span>, <span class="str">"100%"</span>]&#125; /&gt;
+&lt;/<span class="ty">Window</span>&gt;
+
+<span class="cm">// Glass Frame (shorthand)</span>
+&lt;<span class="ty">GlassFrame</span> <span class="fn">title</span>=<span class="str">"Aero"</span>&gt;Content&lt;/<span class="ty">GlassFrame</span>&gt;
+
+<span class="cm">// Dialog Box</span>
+&lt;<span class="ty">DialogBox</span> <span class="fn">title</span>=<span class="str">"Confirm"</span> <span class="fn">onClose</span>=&#123;() =&gt; &#123;&#125;&#125;&gt;
+  &lt;p&gt;Are you sure?&lt;/p&gt;
+&lt;/<span class="ty">DialogBox</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="win-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span>, <span class="ty">StatusBar</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Window</span>&gt;
+  &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+  &lt;<span class="ty">WindowBody</span> <span class="fn">hasSpace</span>&gt;Content&lt;/<span class="ty">WindowBody</span>&gt;
+  &lt;<span class="ty">StatusBar</span> <span class="fn">fields</span>=&#123;[<span class="str">"Ready"</span>]&#125; /&gt;
+&lt;/<span class="ty">Window</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="win-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Window</span>, <span class="ty">TitleBar</span>, <span class="ty">WindowBody</span>, <span class="ty">StatusBar</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/window"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Window</span>&gt;
+    &lt;<span class="ty">TitleBar</span> <span class="fn">title</span>=<span class="str">"My App"</span> /&gt;
+    &lt;<span class="ty">WindowBody</span> <span class="fn">has-space</span>&gt;Content&lt;/<span class="ty">WindowBody</span>&gt;
+    &lt;<span class="ty">StatusBar</span> <span class="fn">:fields</span>=<span class="str">"['Ready']"</span> /&gt;
+  &lt;/<span class="ty">Window</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
     </div>
   </div>
 
@@ -68,8 +130,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <table>
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td>variant</td><td>"default" | "glass"</td><td>"default"</td><td>Window frame style</td></tr>
-      <tr><td>role</td><td>string</td><td>-</td><td>ARIA role attribute</td></tr>
+      <tr><td>variant</td><td><code>"default" | "glass"</code></td><td><code>"default"</code></td><td>Window frame style</td></tr>
+      <tr><td>role</td><td><code>string</code></td><td>-</td><td>ARIA role (e.g., "dialog")</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
     </tbody>
   </table>
 
@@ -77,9 +140,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <table>
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td>title</td><td>string</td><td>required</td><td>Title bar text</td></tr>
-      <tr><td>controls</td><td>Array</td><td>["minimize","maximize","close"]</td><td>Control buttons to display</td></tr>
-      <tr><td>icon</td><td>string</td><td>-</td><td>Icon image src</td></tr>
+      <tr><td>title</td><td><code>string</code></td><td>required</td><td>Title bar text</td></tr>
+      <tr><td>controls</td><td><code>ControlButton[]</code></td><td><code>["minimize","maximize","close"]</code></td><td>Control buttons to display</td></tr>
+      <tr><td>icon</td><td><code>string</code></td><td>-</td><td>Icon image src</td></tr>
+      <tr><td>onMinimize</td><td><code>() =&gt; void</code></td><td>-</td><td>Minimize handler</td></tr>
+      <tr><td>onMaximize</td><td><code>() =&gt; void</code></td><td>-</td><td>Maximize handler</td></tr>
+      <tr><td>onClose</td><td><code>() =&gt; void</code></td><td>-</td><td>Close handler</td></tr>
+      <tr><td>onHelp</td><td><code>() =&gt; void</code></td><td>-</td><td>Help handler</td></tr>
     </tbody>
   </table>
 
@@ -87,7 +154,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <table>
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td>hasSpace</td><td>boolean</td><td>false</td><td>Add inner padding</td></tr>
+      <tr><td>hasSpace</td><td><code>boolean</code></td><td><code>false</code></td><td>Add inner padding</td></tr>
     </tbody>
   </table>
 
@@ -95,7 +162,29 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <table>
     <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
     <tbody>
-      <tr><td>fields</td><td>string[]</td><td>required</td><td>Status bar field texts</td></tr>
+      <tr><td>fields</td><td><code>string[]</code></td><td>required</td><td>Status bar field texts</td></tr>
+    </tbody>
+  </table>
+
+  <h3>GlassFrame</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>title</td><td><code>string</code></td><td>required</td><td>Window title</td></tr>
+      <tr><td>controls</td><td><code>ControlButton[]</code></td><td><code>["minimize","maximize","close"]</code></td><td>Control buttons</td></tr>
+      <tr><td>hasSpace</td><td><code>boolean</code></td><td><code>true</code></td><td>Inner padding</td></tr>
+    </tbody>
+  </table>
+
+  <h3>DialogBox</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>title</td><td><code>string</code></td><td>required</td><td>Dialog title</td></tr>
+      <tr><td>controls</td><td><code>("close" | "help")[]</code></td><td><code>["close"]</code></td><td>Control buttons</td></tr>
+      <tr><td>hasSpace</td><td><code>boolean</code></td><td><code>true</code></td><td>Inner padding</td></tr>
+      <tr><td>onClose</td><td><code>() =&gt; void</code></td><td>-</td><td>Close handler</td></tr>
+      <tr><td>onHelp</td><td><code>() =&gt; void</code></td><td>-</td><td>Help handler</td></tr>
     </tbody>
   </table>
 </BaseLayout>

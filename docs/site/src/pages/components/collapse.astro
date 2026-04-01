@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Collapse">
+  <h1 class="header header-document">Collapse</h1>
+  <p class="instruction">Windows 7 스타일 접기/펼치기. Controlled/uncontrolled 모드를 모두 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add collapse</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <details>
+      <summary>Click to expand</summary>
+      <p>Hidden content revealed!</p>
+    </details>
+    <details open>
+      <summary>Already open</summary>
+      <p>This section is expanded by default.</p>
+    </details>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="col-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="col-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="col-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="col-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Collapse</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/collapse"</span>;
+
+&lt;<span class="ty">Collapse</span> <span class="fn">summary</span>=<span class="str">"Details"</span>&gt;
+  &lt;p&gt;Hidden content&lt;/p&gt;
+&lt;/<span class="ty">Collapse</span>&gt;
+
+&lt;<span class="ty">Collapse</span> <span class="fn">summary</span>=<span class="str">"Open by default"</span> <span class="fn">defaultOpen</span>&gt;
+  &lt;p&gt;Visible content&lt;/p&gt;
+&lt;/<span class="ty">Collapse</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="col-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Collapse</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/collapse"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Collapse</span> <span class="fn">summary</span>=<span class="str">"Details"</span>&gt;
+  &lt;p&gt;Hidden content&lt;/p&gt;
+&lt;/<span class="ty">Collapse</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="col-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Collapse</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/collapse"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Collapse</span> <span class="fn">summary</span>=<span class="str">"Details"</span>&gt;
+    &lt;p&gt;Hidden content&lt;/p&gt;
+  &lt;/<span class="ty">Collapse</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>summary</td><td><code>string</code></td><td>required</td><td>Toggle button text</td></tr>
+      <tr><td>defaultOpen</td><td><code>boolean</code></td><td>-</td><td>Initially open (uncontrolled)</td></tr>
+      <tr><td>open</td><td><code>boolean</code></td><td>-</td><td>Open state (controlled)</td></tr>
+      <tr><td>onToggle</td><td><code>(open: boolean) =&gt; void</code></td><td>-</td><td>Toggle callback</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

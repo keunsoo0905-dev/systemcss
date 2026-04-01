@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Dropdown">
+  <h1 class="header header-document">Dropdown</h1>
+  <p class="instruction">Windows 7 스타일 드롭다운 선택 컴포넌트.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add dropdown</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <select style="min-width: 200px;">
+      <option value="" disabled selected>Choose an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3" disabled>Option 3 (disabled)</option>
+    </select>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="dd-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="dd-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="dd-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="dd-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Dropdown</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/dropdown"</span>;
+
+&lt;<span class="ty">Dropdown</span>
+  <span class="fn">placeholder</span>=<span class="str">"Choose an option"</span>
+  <span class="fn">options</span>=&#123;[
+    &#123; <span class="fn">value</span>: <span class="str">"1"</span>, <span class="fn">label</span>: <span class="str">"Option 1"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"2"</span>, <span class="fn">label</span>: <span class="str">"Option 2"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"3"</span>, <span class="fn">label</span>: <span class="str">"Disabled"</span>, <span class="fn">disabled</span>: <span class="kw">true</span> &#125;,
+  ]&#125;
+/&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="dd-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Dropdown</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/dropdown"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Dropdown</span>
+  <span class="fn">placeholder</span>=<span class="str">"Choose an option"</span>
+  <span class="fn">options</span>=&#123;[
+    &#123; <span class="fn">value</span>: <span class="str">"1"</span>, <span class="fn">label</span>: <span class="str">"Option 1"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"2"</span>, <span class="fn">label</span>: <span class="str">"Option 2"</span> &#125;,
+  ]&#125;
+/&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="dd-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Dropdown</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/dropdown"</span>;
+
+<span class="kw">const</span> options = [
+  &#123; <span class="fn">value</span>: <span class="str">"1"</span>, <span class="fn">label</span>: <span class="str">"Option 1"</span> &#125;,
+  &#123; <span class="fn">value</span>: <span class="str">"2"</span>, <span class="fn">label</span>: <span class="str">"Option 2"</span> &#125;,
+];
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Dropdown</span> <span class="fn">placeholder</span>=<span class="str">"Choose"</span> <span class="fn">:options</span>=<span class="str">"options"</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>options</td><td><code>DropdownOption[]</code></td><td>required</td><td>Array of &#123; value, label, disabled? &#125;</td></tr>
+      <tr><td>placeholder</td><td><code>string</code></td><td>-</td><td>Placeholder text shown before selection</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Extends <code>React.SelectHTMLAttributes</code> (excluding <code>multiple</code>).</p>
+</BaseLayout>

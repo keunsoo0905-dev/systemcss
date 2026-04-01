@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="GroupBox">
+  <h1 class="header header-document">GroupBox</h1>
+  <p class="instruction">Windows 7 스타일 그룹 박스 (fieldset). 관련 컨트롤을 시각적으로 그룹핑합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add groupbox</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <fieldset style="max-width: 300px;">
+      <legend>Settings</legend>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span><input type="checkbox" id="gb-cb1" checked /><label for="gb-cb1"> Enable notifications</label></span>
+        <span><input type="checkbox" id="gb-cb2" /><label for="gb-cb2"> Dark mode</label></span>
+      </div>
+    </fieldset>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="gb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="gb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="gb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="gb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">GroupBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/groupbox"</span>;
+
+&lt;<span class="ty">GroupBox</span> <span class="fn">legend</span>=<span class="str">"Settings"</span>&gt;
+  &lt;p&gt;Content inside the group&lt;/p&gt;
+&lt;/<span class="ty">GroupBox</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="gb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">GroupBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/groupbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">GroupBox</span> <span class="fn">legend</span>=<span class="str">"Settings"</span>&gt;
+  &lt;p&gt;Content inside the group&lt;/p&gt;
+&lt;/<span class="ty">GroupBox</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="gb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">GroupBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/groupbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">GroupBox</span> <span class="fn">legend</span>=<span class="str">"Settings"</span>&gt;
+    &lt;p&gt;Content inside the group&lt;/p&gt;
+  &lt;/<span class="ty">GroupBox</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>legend</td><td><code>string</code></td><td>-</td><td>Group box title text</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Extends <code>React.FieldsetHTMLAttributes</code>.</p>
+</BaseLayout>

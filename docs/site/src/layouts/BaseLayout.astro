@@ -1,9 +1,76 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  isHome?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, isHome = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const components = [
+  {
+    category: "Form",
+    items: [
+      { name: "Button", href: "/components/button" },
+      { name: "TextBox", href: "/components/textbox" },
+      { name: "Checkbox", href: "/components/checkbox" },
+      { name: "RadioButton", href: "/components/radiobutton" },
+      { name: "Dropdown", href: "/components/dropdown" },
+      { name: "ComboBox", href: "/components/combobox" },
+      { name: "SearchBox", href: "/components/searchbox" },
+    ],
+  },
+  {
+    category: "Container",
+    items: [
+      { name: "Window", href: "/components/window" },
+      { name: "GroupBox", href: "/components/groupbox" },
+      { name: "Collapse", href: "/components/collapse" },
+    ],
+  },
+  {
+    category: "Data",
+    items: [
+      { name: "ListBox", href: "/components/listbox" },
+      { name: "ListView", href: "/components/listview" },
+      { name: "TreeView", href: "/components/treeview" },
+    ],
+  },
+  {
+    category: "Navigation",
+    items: [
+      { name: "Tabs", href: "/components/tabs" },
+      { name: "Menu", href: "/components/menu" },
+      { name: "MenuBar", href: "/components/menubar" },
+      { name: "Balloon", href: "/components/balloon" },
+    ],
+  },
+  {
+    category: "Feedback",
+    items: [
+      { name: "ProgressBar", href: "/components/progressbar" },
+      { name: "Spinner", href: "/components/spinner" },
+      { name: "Scrollbar", href: "/components/scrollbar" },
+    ],
+  },
+  {
+    category: "Interactive",
+    items: [
+      { name: "Slider", href: "/components/slider" },
+    ],
+  },
+  {
+    category: "Typography",
+    items: [
+      { name: "Typography", href: "/components/typography" },
+    ],
+  },
+];
+
+function isActive(href: string): boolean {
+  return currentPath === href || currentPath === href + "/";
+}
 ---
 
 <!doctype html>
@@ -11,68 +78,442 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description || "Windows 7 UI component library for React, Svelte, and Vue"} />
     <title>{title} | win7ui</title>
     <link rel="stylesheet" href="https://unpkg.com/7.css@0.21.1/dist/7.css" />
-    <style>
+    <style is:global>
+      * { box-sizing: border-box; }
+
       body {
-        font-family: "Segoe UI", sans-serif;
+        font-family: "Segoe UI", -apple-system, sans-serif;
         background: #f0f0f0;
         margin: 0;
-        padding: 20px;
+        padding: 0;
+        min-height: 100vh;
       }
+
+      /* ===== TOP BAR (Taskbar-style) ===== */
+      .docs-topbar {
+        background: linear-gradient(to bottom, #3a6ea5 0%, #1f4e7a 100%);
+        color: #fff;
+        padding: 6px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .docs-topbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .docs-topbar-brand:hover { color: #fff; text-decoration: none; }
+
+      .docs-topbar-brand span {
+        background: rgba(255,255,255,0.2);
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 400;
+      }
+
+      .docs-topbar-links {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .docs-topbar-links a {
+        color: rgba(255,255,255,0.9);
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .docs-topbar-links a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .docs-topbar-hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 4px 8px;
+      }
+
+      /* ===== LAYOUT ===== */
       .docs-layout {
         display: flex;
-        gap: 20px;
-        max-width: 1200px;
+        max-width: 1280px;
         margin: 0 auto;
+        padding: 16px;
+        gap: 16px;
+        min-height: calc(100vh - 40px);
       }
+
+      /* ===== SIDEBAR ===== */
       .docs-sidebar {
-        width: 240px;
+        width: 260px;
         flex-shrink: 0;
+        position: sticky;
+        top: 56px;
+        align-self: flex-start;
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
       }
+
+      .docs-sidebar .window-body {
+        padding: 0;
+      }
+
+      .docs-sidebar .tree-view {
+        margin: 0;
+        padding: 4px 0;
+      }
+
+      .docs-sidebar .tree-view a {
+        display: block;
+        padding: 3px 12px;
+        color: #000;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .docs-sidebar .tree-view a:hover {
+        background: #e5f3ff;
+        color: #000;
+        text-decoration: none;
+      }
+
+      .docs-sidebar .tree-view a.active {
+        background: #0078d7;
+        color: #fff;
+      }
+
+      .docs-sidebar .tree-view li {
+        list-style: none;
+      }
+
+      .docs-sidebar .tree-view > li > span.category-label {
+        display: block;
+        padding: 6px 12px 3px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .docs-sidebar .tree-view > li > ul {
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .docs-sidebar .tree-view > li > ul > li {
+        list-style: none;
+      }
+
+      /* ===== CONTENT ===== */
       .docs-content {
         flex: 1;
         min-width: 0;
       }
+
+      .docs-content .window-body {
+        padding: 20px 24px;
+      }
+
+      .docs-content .window-body.has-space {
+        padding: 20px 24px;
+      }
+
+      /* ===== CODE BLOCKS ===== */
+      pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 16px;
+        border-radius: 0;
+        overflow-x: auto;
+        font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+        font-size: 13px;
+        line-height: 1.5;
+        border: 1px solid #333;
+        margin: 8px 0 16px;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      code {
+        background: #e8e8e8;
+        padding: 2px 6px;
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        font-size: 12px;
+        border: 1px solid #d5d5d5;
+      }
+
+      /* ===== SYNTAX HIGHLIGHT (basic) ===== */
+      .kw { color: #569cd6; }
+      .str { color: #ce9178; }
+      .cm { color: #6a9955; }
+      .fn { color: #dcdcaa; }
+      .ty { color: #4ec9b0; }
+      .op { color: #d4d4d4; }
+      .num { color: #b5cea8; }
+
+      /* ===== TABLES ===== */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0 16px;
+        font-size: 12px;
+      }
+
+      th, td {
+        border: 1px solid #d5d5d5;
+        padding: 6px 10px;
+        text-align: left;
+      }
+
+      th {
+        background: #f0f0f0;
+        font-weight: 600;
+      }
+
+      tr:nth-child(even) td {
+        background: #fafafa;
+      }
+
+      /* ===== DEMO BOX ===== */
+      .demo-box {
+        border: 1px solid #d5d5d5;
+        background: #fff;
+        padding: 20px;
+        margin: 8px 0 16px;
+      }
+
+      .demo-box + pre {
+        margin-top: -8px;
+      }
+
+      /* ===== FRAMEWORK TABS ===== */
+      .code-tabs {
+        margin: 8px 0 16px;
+      }
+
+      .code-tabs menu[role="tablist"] {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+        border-bottom: 1px solid #d5d5d5;
+        list-style: none;
+      }
+
+      .code-tabs [role="tab"] {
+        padding: 4px 16px;
+        border: 1px solid transparent;
+        border-bottom: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: "Segoe UI", sans-serif;
+        color: #666;
+        margin-bottom: -1px;
+      }
+
+      .code-tabs [role="tab"][aria-selected="true"] {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        border-color: #d5d5d5;
+        border-bottom-color: #1e1e1e;
+      }
+
+      .code-tabs [role="tabpanel"] {
+        display: none;
+      }
+
+      .code-tabs [role="tabpanel"].active {
+        display: block;
+      }
+
+      .code-tabs [role="tabpanel"] pre {
+        margin-top: 0;
+        border-top: none;
+      }
+
+      /* ===== HEADINGS ===== */
+      h1.header-document { margin-top: 0; }
+
+      h2.header-group {
+        margin-top: 24px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #d5d5d5;
+      }
+
+      /* ===== FOOTER ===== */
+      .docs-footer {
+        text-align: center;
+        padding: 16px;
+        font-size: 11px;
+        color: #888;
+        border-top: 1px solid #d5d5d5;
+        margin-top: 24px;
+      }
+
+      .docs-footer a {
+        color: #06c;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .docs-topbar-links { display: none; }
+        .docs-topbar-hamburger { display: block; }
+
+        .docs-layout {
+          flex-direction: column;
+          padding: 8px;
+        }
+
+        .docs-sidebar {
+          width: 100%;
+          position: static;
+          max-height: none;
+          display: none;
+        }
+
+        .docs-sidebar.open {
+          display: block;
+        }
+
+        .docs-content .window-body {
+          padding: 12px 16px;
+        }
+
+        pre {
+          font-size: 11px;
+          padding: 12px;
+        }
+
+        table {
+          font-size: 11px;
+        }
+
+        th, td {
+          padding: 4px 6px;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="docs-layout">
-      <nav class="docs-sidebar">
-        <div class="window">
-          <div class="title-bar">
-            <div class="title-bar-text">win7ui</div>
-          </div>
-          <div class="window-body">
-            <ul class="tree-view">
-              <li><a href="/">Home</a></li>
-              <li><a href="/guides/getting-started">Getting Started</a></li>
-              <li>
-                Components
-                <ul>
-                  <li><a href="/components/button">Button</a></li>
-                  <li><a href="/components/textbox">Textbox</a></li>
-                  <li><a href="/components/checkbox">Checkbox</a></li>
-                  <li><a href="/components/window">Window</a></li>
-                  <li><a href="/components/scrollbar">Scrollbar</a></li>
-                  <li><a href="/components/balloon">Balloon</a></li>
-                  <li><a href="/components/typography">Typography</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <!-- Top Bar -->
+    <header class="docs-topbar">
+      <a href="/" class="docs-topbar-brand">
+        win7ui <span>v1.0.0</span>
+      </a>
+      <nav class="docs-topbar-links">
+        <a href="/guides/getting-started">Getting Started</a>
+        <a href="/components/button">Components</a>
+        <a href="https://github.com/keunsoo0905-dev/systemcss" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.npmjs.com/package/win7ui" target="_blank" rel="noopener">npm</a>
       </nav>
-      <main class="docs-content">
-        <div class="window">
-          <div class="title-bar">
-            <div class="title-bar-text">{title}</div>
-          </div>
-          <div class="window-body has-space">
-            <slot />
-          </div>
-        </div>
+      <button class="docs-topbar-hamburger" id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    </header>
+
+    {isHome ? (
+      <!-- Home: full-width, no sidebar -->
+      <main>
+        <slot />
       </main>
-    </div>
+    ) : (
+      <!-- Docs: sidebar + content -->
+      <div class="docs-layout">
+        <nav class="docs-sidebar" id="sidebar">
+          <div class="window">
+            <div class="title-bar">
+              <div class="title-bar-text">Navigation</div>
+            </div>
+            <div class="window-body">
+              <ul class="tree-view">
+                <li>
+                  <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+                </li>
+                <li>
+                  <a href="/guides/getting-started" class={isActive("/guides/getting-started") ? "active" : ""}>Getting Started</a>
+                </li>
+                {components.map((group) => (
+                  <li>
+                    <span class="category-label">{group.category}</span>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li>
+                          <a href={item.href} class={isActive(item.href) ? "active" : ""}>
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="docs-content">
+          <div class="window">
+            <div class="title-bar">
+              <div class="title-bar-text">{title}</div>
+            </div>
+            <div class="window-body has-space">
+              <slot />
+            </div>
+          </div>
+          <footer class="docs-footer">
+            MIT License &middot; <a href="https://github.com/keunsoo0905-dev/systemcss">GitHub</a> &middot; <a href="https://www.npmjs.com/package/win7ui">npm</a>
+          </footer>
+        </main>
+      </div>
+    )}
+
+    <!-- Mobile menu toggle + framework tabs -->
+    <script is:inline>
+      // Mobile sidebar toggle
+      document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.getElementById("sidebar")?.classList.toggle("open");
+      });
+
+      // Framework code tabs
+      document.querySelectorAll(".code-tabs").forEach((tabGroup) => {
+        const tabs = tabGroup.querySelectorAll("[role='tab']");
+        const panels = tabGroup.querySelectorAll("[role='tabpanel']");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+            panels.forEach((p) => p.classList.remove("active"));
+
+            tab.setAttribute("aria-selected", "true");
+            const target = tabGroup.querySelector("#" + tab.getAttribute("aria-controls"));
+            target?.classList.add("active");
+          });
+        });
+      });
+    </script>
   </body>
 </html>

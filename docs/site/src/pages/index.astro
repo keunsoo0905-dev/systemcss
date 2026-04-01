@@ -2,25 +2,414 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Home">
-  <h1 class="header header-document">win7ui</h1>
-  <p class="instruction">
-    Windows 7 UI component library for React, Svelte, and Vue.
-  </p>
-  <p class="instruction">
-    Install components directly into your project source code, shadcn/ui style.
-  </p>
+<BaseLayout title="Home" isHome={true}>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">win7ui</h1>
+      <p class="hero-subtitle">Windows 7 UI Components for Modern Web</p>
+      <p class="hero-desc">
+        22개 Windows 7 스타일 컴포넌트를 React, Svelte, Vue에서 사용하세요.<br />
+        shadcn/ui처럼 CLI로 설치하고, 소스 코드를 직접 소유합니다.
+      </p>
+      <div class="hero-cta">
+        <pre class="hero-code"><code>npx win7ui init</code></pre>
+        <div class="hero-buttons">
+          <a href="/guides/getting-started" class="hero-btn-primary">
+            <button>Get Started</button>
+          </a>
+          <a href="https://github.com/keunsoo0905-dev/systemcss" target="_blank" rel="noopener" class="hero-btn-secondary">
+            <button>GitHub</button>
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="header header-group">Quick Start</h2>
-  <pre><code>npx win7ui init
-npx win7ui add button window</code></pre>
+    <!-- Live Demo Window -->
+    <div class="hero-demo">
+      <div class="window" style="max-width: 480px; margin: 0 auto;">
+        <div class="title-bar">
+          <div class="title-bar-text">win7ui Demo</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body has-space">
+          <p style="margin-top: 0;">Welcome to win7ui!</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button>Button</button>
+            <button disabled>Disabled</button>
+            <button style="font-weight: 700;">Primary</button>
+          </div>
+          <fieldset>
+            <legend>Form Controls</legend>
+            <div style="margin-bottom: 8px;">
+              <input type="checkbox" id="demo-cb" checked />
+              <label for="demo-cb">Checkbox</label>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <input type="radio" id="demo-r1" name="demo-radio" checked />
+              <label for="demo-r1">Option A</label>
+              <input type="radio" id="demo-r2" name="demo-radio" />
+              <label for="demo-r2">Option B</label>
+            </div>
+            <div>
+              <input type="text" placeholder="TextBox" style="width: 100%;" />
+            </div>
+          </fieldset>
+          <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="margin-top: 12px;">
+            <div style="width: 70%;"></div>
+          </div>
+        </div>
+        <div class="status-bar">
+          <p class="status-bar-field">Ready</p>
+          <p class="status-bar-field">22 components</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <h2 class="header header-group">Features</h2>
-  <ul>
-    <li>22 Windows 7-styled components</li>
-    <li>React 18+, Svelte 5, Vue 3 support</li>
-    <li>TypeScript and JavaScript variants</li>
-    <li>Based on 7.css for authentic Windows 7 look</li>
-    <li>CLI installs only what you need</li>
-  </ul>
+  <!-- Features Section -->
+  <section class="features">
+    <div class="features-inner">
+      <h2 class="section-title">Features</h2>
+      <div class="features-grid">
+        <div class="window feature-card">
+          <div class="title-bar">
+            <div class="title-bar-text">Multi-Framework</div>
+          </div>
+          <div class="window-body has-space">
+            <p>React 18+, Svelte 5, Vue 3를 모두 지원합니다. TypeScript와 JavaScript 변형 모두 제공됩니다.</p>
+          </div>
+        </div>
+        <div class="window feature-card">
+          <div class="title-bar">
+            <div class="title-bar-text">Own Your Code</div>
+          </div>
+          <div class="window-body has-space">
+            <p>shadcn/ui 스타일로 컴포넌트 소스 코드가 프로젝트에 복사됩니다. 완전한 커스터마이징이 가능합니다.</p>
+          </div>
+        </div>
+        <div class="window feature-card">
+          <div class="title-bar">
+            <div class="title-bar-text">CLI Powered</div>
+          </div>
+          <div class="window-body has-space">
+            <p>프레임워크 자동 감지, 필요한 컴포넌트만 선택 설치. init → add → 바로 사용.</p>
+          </div>
+        </div>
+        <div class="window feature-card">
+          <div class="title-bar">
+            <div class="title-bar-text">22 Components</div>
+          </div>
+          <div class="window-body has-space">
+            <p>Button, Window, Tabs, Menu, ProgressBar 등 Windows 7의 핵심 UI 요소를 모두 제공합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start Section -->
+  <section class="quickstart">
+    <div class="quickstart-inner">
+      <h2 class="section-title">Quick Start</h2>
+      <div class="window" style="max-width: 640px; margin: 0 auto;">
+        <div class="title-bar">
+          <div class="title-bar-text">Terminal</div>
+        </div>
+        <div class="window-body" style="padding: 0;">
+          <pre style="margin: 0; border: none;"><code><span class="cm"># 1. Initialize in your project</span>
+npx win7ui init
+
+<span class="cm"># 2. Add components you need</span>
+npx win7ui add button window tabs
+
+<span class="cm"># 3. Import and use</span>
+<span class="kw">import</span> &#123; <span class="ty">Button</span>, <span class="ty">Window</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui"</span>;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Overview -->
+  <section class="components-overview">
+    <div class="components-inner">
+      <h2 class="section-title">Components</h2>
+      <div class="components-grid">
+        <div class="component-group">
+          <h3>Form</h3>
+          <ul>
+            <li><a href="/components/button">Button</a></li>
+            <li><a href="/components/textbox">TextBox</a></li>
+            <li><a href="/components/checkbox">Checkbox</a></li>
+            <li><a href="/components/radiobutton">RadioButton</a></li>
+            <li><a href="/components/dropdown">Dropdown</a></li>
+            <li><a href="/components/combobox">ComboBox</a></li>
+            <li><a href="/components/searchbox">SearchBox</a></li>
+          </ul>
+        </div>
+        <div class="component-group">
+          <h3>Container</h3>
+          <ul>
+            <li><a href="/components/window">Window</a></li>
+            <li><a href="/components/groupbox">GroupBox</a></li>
+            <li><a href="/components/collapse">Collapse</a></li>
+          </ul>
+        </div>
+        <div class="component-group">
+          <h3>Data</h3>
+          <ul>
+            <li><a href="/components/listbox">ListBox</a></li>
+            <li><a href="/components/listview">ListView</a></li>
+            <li><a href="/components/treeview">TreeView</a></li>
+          </ul>
+        </div>
+        <div class="component-group">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="/components/tabs">Tabs</a></li>
+            <li><a href="/components/menu">Menu</a></li>
+            <li><a href="/components/menubar">MenuBar</a></li>
+            <li><a href="/components/balloon">Balloon</a></li>
+          </ul>
+        </div>
+        <div class="component-group">
+          <h3>Feedback</h3>
+          <ul>
+            <li><a href="/components/progressbar">ProgressBar</a></li>
+            <li><a href="/components/spinner">Spinner</a></li>
+            <li><a href="/components/scrollbar">Scrollbar</a></li>
+          </ul>
+        </div>
+        <div class="component-group">
+          <h3>Other</h3>
+          <ul>
+            <li><a href="/components/slider">Slider</a></li>
+            <li><a href="/components/typography">Typography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="home-footer">
+    <p>MIT License &middot; <a href="https://github.com/keunsoo0905-dev/systemcss">GitHub</a> &middot; <a href="https://www.npmjs.com/package/win7ui">npm</a></p>
+  </footer>
 </BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #245dab 0%, #1a4a8a 50%, #0f3260 100%);
+    color: #fff;
+    padding: 60px 20px 40px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 16px;
+    opacity: 0.9;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin: 0 0 24px;
+  }
+
+  .hero-code {
+    display: inline-block;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 24px;
+    font-size: 16px;
+    margin: 0 0 16px;
+    color: #fff;
+  }
+
+  .hero-code code {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .hero-btn-primary, .hero-btn-secondary {
+    text-decoration: none;
+  }
+
+  .hero-btn-primary button {
+    font-weight: 700;
+    padding: 6px 24px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .hero-btn-secondary button {
+    padding: 6px 24px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .hero-demo {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    background: #f0f0f0;
+    padding: 48px 20px;
+  }
+
+  .features-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 24px;
+    color: #039;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .feature-card .window-body p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  /* ===== QUICK START ===== */
+  .quickstart {
+    background: #e8e8e8;
+    padding: 48px 20px;
+  }
+
+  .quickstart-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ===== COMPONENTS OVERVIEW ===== */
+  .components-overview {
+    background: #f0f0f0;
+    padding: 48px 20px;
+  }
+
+  .components-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .component-group h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #039;
+    margin: 0 0 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #d5d5d5;
+  }
+
+  .component-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .component-group li {
+    margin: 2px 0;
+  }
+
+  .component-group a {
+    font-size: 12px;
+    color: #06c;
+    text-decoration: none;
+    padding: 2px 0;
+    display: inline-block;
+  }
+
+  .component-group a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== FOOTER ===== */
+  .home-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #888;
+    background: #e0e0e0;
+    border-top: 1px solid #d5d5d5;
+  }
+
+  .home-footer a {
+    color: #06c;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 40px 16px 32px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+    }
+
+    .features, .quickstart, .components-overview {
+      padding: 32px 16px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="ListBox">
+  <h1 class="header header-document">ListBox</h1>
+  <p class="instruction">Windows 7 스타일 스크롤 가능한 선택 목록. 단일/다중 선택을 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add listbox</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <ul class="tree-view" style="height: 120px; overflow-y: auto; max-width: 200px;">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="lb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="lb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="lb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="lb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">ListBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/listbox"</span>;
+
+&lt;<span class="ty">ListBox</span>
+  <span class="fn">items</span>=&#123;[
+    &#123; <span class="fn">value</span>: <span class="str">"1"</span>, <span class="fn">label</span>: <span class="str">"Item 1"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"2"</span>, <span class="fn">label</span>: <span class="str">"Item 2"</span> &#125;,
+    &#123; <span class="fn">value</span>: <span class="str">"3"</span>, <span class="fn">label</span>: <span class="str">"Item 3"</span> &#125;,
+  ]&#125;
+  <span class="fn">selectionMode</span>=<span class="str">"single"</span>
+  <span class="fn">onSelectionChange</span>=&#123;(<span class="fn">values</span>) =&gt; <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">values</span>)&#125;
+/&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="lb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">ListBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/listbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">ListBox</span> <span class="fn">items</span>=&#123;items&#125; <span class="fn">selectionMode</span>=<span class="str">"multiple"</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="lb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">ListBox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/listbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">ListBox</span> <span class="fn">:items</span>=<span class="str">"items"</span> <span class="fn">selection-mode</span>=<span class="str">"single"</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>items</td><td><code>ListBoxItem[]</code></td><td>required</td><td>Array of &#123; value, label, disabled? &#125;</td></tr>
+      <tr><td>selectionMode</td><td><code>"single" | "multiple"</code></td><td><code>"single"</code></td><td>Selection mode</td></tr>
+      <tr><td>selectedValues</td><td><code>string[]</code></td><td>-</td><td>Controlled selected values</td></tr>
+      <tr><td>onSelectionChange</td><td><code>(values: string[]) =&gt; void</code></td><td>-</td><td>Selection change callback</td></tr>
+      <tr><td>hasShadow</td><td><code>boolean</code></td><td><code>false</code></td><td>Show shadow effect</td></tr>
+      <tr><td>hasHover</td><td><code>boolean</code></td><td><code>false</code></td><td>Highlight on hover</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

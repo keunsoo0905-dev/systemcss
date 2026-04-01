@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Tabs">
+  <h1 class="header header-document">Tabs</h1>
+  <p class="instruction">Windows 7 스타일 탭 내비게이션. Controlled/uncontrolled 모드를 지원합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add tabs</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <menu role="tablist">
+      <button role="tab" aria-selected="true">General</button>
+      <button role="tab" aria-selected="false">Advanced</button>
+      <button role="tab" aria-selected="false">Security</button>
+    </menu>
+    <div role="tabpanel" style="border: 1px solid #d5d5d5; border-top: none; padding: 12px;">
+      <p style="margin: 0;">General settings content.</p>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="tab-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="tab-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="tab-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="tab-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Tabs</span>, <span class="ty">Tab</span>, <span class="ty">TabPanel</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/tabs"</span>;
+
+&lt;<span class="ty">Tabs</span> <span class="fn">defaultValue</span>=<span class="str">"general"</span>&gt;
+  &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General&lt;/<span class="ty">Tab</span>&gt;
+  &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced&lt;/<span class="ty">Tab</span>&gt;
+  &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General content&lt;/<span class="ty">TabPanel</span>&gt;
+  &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced content&lt;/<span class="ty">TabPanel</span>&gt;
+&lt;/<span class="ty">Tabs</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="tab-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Tabs</span>, <span class="ty">Tab</span>, <span class="ty">TabPanel</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/tabs"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Tabs</span> <span class="fn">defaultValue</span>=<span class="str">"general"</span>&gt;
+  &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General&lt;/<span class="ty">Tab</span>&gt;
+  &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced&lt;/<span class="ty">Tab</span>&gt;
+  &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General content&lt;/<span class="ty">TabPanel</span>&gt;
+  &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced content&lt;/<span class="ty">TabPanel</span>&gt;
+&lt;/<span class="ty">Tabs</span>&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="tab-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Tabs</span>, <span class="ty">Tab</span>, <span class="ty">TabPanel</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/tabs"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Tabs</span> <span class="fn">default-value</span>=<span class="str">"general"</span>&gt;
+    &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General&lt;/<span class="ty">Tab</span>&gt;
+    &lt;<span class="ty">Tab</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced&lt;/<span class="ty">Tab</span>&gt;
+    &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"general"</span>&gt;General content&lt;/<span class="ty">TabPanel</span>&gt;
+    &lt;<span class="ty">TabPanel</span> <span class="fn">value</span>=<span class="str">"advanced"</span>&gt;Advanced content&lt;/<span class="ty">TabPanel</span>&gt;
+  &lt;/<span class="ty">Tabs</span>&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <h3>Tabs</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>defaultValue</td><td><code>string</code></td><td>-</td><td>Initial active tab (uncontrolled)</td></tr>
+      <tr><td>value</td><td><code>string</code></td><td>-</td><td>Active tab value (controlled)</td></tr>
+      <tr><td>onValueChange</td><td><code>(value: string) =&gt; void</code></td><td>-</td><td>Tab change callback</td></tr>
+      <tr><td>justified</td><td><code>boolean</code></td><td><code>false</code></td><td>Stretch tabs to fill width</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <h3>Tab</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>value</td><td><code>string</code></td><td>required</td><td>Tab identifier</td></tr>
+      <tr><td>disabled</td><td><code>boolean</code></td><td><code>false</code></td><td>Disable the tab</td></tr>
+    </tbody>
+  </table>
+  <h3>TabPanel</h3>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>value</td><td><code>string</code></td><td>required</td><td>Matching tab identifier</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

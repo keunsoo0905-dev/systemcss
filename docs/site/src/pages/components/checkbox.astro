@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Checkbox">
+  <h1 class="header header-document">Checkbox</h1>
+  <p class="instruction">Windows 7 스타일 체크박스. 라벨을 필수로 제공합니다.</p>
+
+  <h2 class="header header-group">Installation</h2>
+  <pre><code>npx win7ui add checkbox</code></pre>
+
+  <h2 class="header header-group">Demo</h2>
+  <div class="demo-box">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span><input type="checkbox" id="cb1" checked /><label for="cb1"> Checked</label></span>
+      <span><input type="checkbox" id="cb2" /><label for="cb2"> Unchecked</label></span>
+      <span><input type="checkbox" id="cb3" disabled /><label for="cb3"> Disabled</label></span>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Usage</h2>
+  <div class="code-tabs">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true" aria-controls="cb-react">React</li>
+      <li role="tab" aria-selected="false" aria-controls="cb-svelte">Svelte</li>
+      <li role="tab" aria-selected="false" aria-controls="cb-vue">Vue</li>
+    </menu>
+    <div role="tabpanel" id="cb-react" class="active">
+      <pre><code><span class="kw">import</span> &#123; <span class="ty">Checkbox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/checkbox"</span>;
+
+&lt;<span class="ty">Checkbox</span> <span class="fn">label</span>=<span class="str">"Accept terms"</span> /&gt;
+&lt;<span class="ty">Checkbox</span> <span class="fn">label</span>=<span class="str">"Checked"</span> <span class="fn">defaultChecked</span> /&gt;
+&lt;<span class="ty">Checkbox</span> <span class="fn">label</span>=<span class="str">"Disabled"</span> <span class="fn">disabled</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="cb-svelte">
+      <pre><code>&lt;<span class="kw">script</span>&gt;
+  <span class="kw">import</span> &#123; <span class="ty">Checkbox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/checkbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="ty">Checkbox</span> <span class="fn">label</span>=<span class="str">"Accept terms"</span> /&gt;</code></pre>
+    </div>
+    <div role="tabpanel" id="cb-vue">
+      <pre><code>&lt;<span class="kw">script</span> <span class="fn">setup</span>&gt;
+<span class="kw">import</span> &#123; <span class="ty">Checkbox</span> &#125; <span class="kw">from</span> <span class="str">"./components/win7ui/checkbox"</span>;
+&lt;/<span class="kw">script</span>&gt;
+
+&lt;<span class="kw">template</span>&gt;
+  &lt;<span class="ty">Checkbox</span> <span class="fn">label</span>=<span class="str">"Accept terms"</span> /&gt;
+&lt;/<span class="kw">template</span>&gt;</code></pre>
+    </div>
+  </div>
+
+  <h2 class="header header-group">Props</h2>
+  <table>
+    <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>label</td><td><code>string</code></td><td>required</td><td>Checkbox label text</td></tr>
+      <tr><td>disabled</td><td><code>boolean</code></td><td><code>false</code></td><td>Disable the checkbox</td></tr>
+      <tr><td>className</td><td><code>string</code></td><td>-</td><td>Additional CSS class</td></tr>
+    </tbody>
+  </table>
+  <p class="instruction">Extends <code>React.InputHTMLAttributes</code> (excluding <code>type</code>).</p>
+</BaseLayout>
